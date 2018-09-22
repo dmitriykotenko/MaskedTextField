@@ -1,12 +1,5 @@
-//
-//  MaskedTextFieldUITests.swift
-//  MaskedTextFieldUITests
-//
-//  Created by Dmitry Kotenko on 26/06/2018.
-//  Copyright © 2018 Fiasko. All rights reserved.
-//
-
 import XCTest
+
 
 class MaskedTextFieldUITests: XCTestCase {
         

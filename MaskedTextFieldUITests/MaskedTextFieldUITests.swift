@@ -21,9 +21,23 @@ class MaskedTextFieldUITests: XCTestCase {
         super.tearDown()
     }
     
-    func testExample() {
-        // Use recording to get started writing UI tests.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
+    func testThatValidationEngineWorks() {
+      let app = XCUIApplication()
+      let window = app.windows.element(boundBy: 0)
+      
+      let firstTextField = window.textFields.element(boundBy: 0)
+      firstTextField.tap()
+      
+      app.keys["more"].tap()
+
+      app.keys["2"].tap()
+      app.keys["3"].tap()
+      app.keys["1"].tap()
+      app.keys["5"].tap()
+      app.keys["4"].tap()
+      app.keys["7"].tap()
+
+      let firstTextFieldValue = firstTextField.value as? String
+      XCTAssert(firstTextFieldValue == "23:15")
     }
-    
 }

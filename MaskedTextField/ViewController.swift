@@ -3,7 +3,11 @@ import UIKit
 
 class ViewController: UIViewController {
     
-    let maskedTextField: UITextField = MaskedTextField(decorationTemplate: "__:__")
+    let maskedTextField: MaskedTextField = MaskedTextField(
+      decorationTemplate: "__:__",
+      validator: { ($0 ?? "").count <= 4 }
+    )
+  
     let anotherMaskedTextField = MaskedTextField(decorationTemplate: "__∞∞__")
     var observation: NSKeyValueObservation?
     
@@ -16,8 +20,6 @@ class ViewController: UIViewController {
     }
 
     fileprivate func addMaskedTextField() {
-        // Do any additional setup after loading the view, typically from a nib.
-        
         maskedTextField.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(maskedTextField)
         
@@ -28,8 +30,6 @@ class ViewController: UIViewController {
     }
 
     fileprivate func addAnotherMaskedTextField() {
-        // Do any additional setup after loading the view, typically from a nib.
-        
         anotherMaskedTextField.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(anotherMaskedTextField)
         
@@ -41,10 +41,6 @@ class ViewController: UIViewController {
     
     fileprivate func addKeyValueObserverForMaskedTextField() {
         maskedTextField.addObserver(self, forKeyPath: "text", options: [.old, .new], context: nil)
-//        observation = maskedTextField.observe(\.text) { (textField, change) in
-//            print("Change's kind is «\(String(describing: change.kind))».")
-//            print("New text is «\(String(describing: change.newValue))».")
-//        }
     }
     
     override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {

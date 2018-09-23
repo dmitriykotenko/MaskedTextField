@@ -31,11 +31,11 @@ class EmptyValidatorTests: StringValidatorTester {
   func testThatSingleEnglishWordIsAllowed() {
     assertSuccess(string: "danger")
   }
-
+  
   func testThatStringContainingPunctuationIsAllowed() {
     assertSuccess(string: "d@Wek(@348!123")
   }
-
+  
   func testThatSingleSentenceIsAllowed() {
     assertSuccess(string: "I take a healthy bite from your dainty fingertips.")
   }

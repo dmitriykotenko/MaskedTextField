@@ -31,8 +31,8 @@ class TextFieldValidationEngine: TextFieldDelegateProxy {
   }
   
   private var askParent: (_ textField: UITextField,
-                              _ range: NSRange,
-                  _ replacementString: String) -> Bool {
+    _ range: NSRange,
+    _ replacementString: String) -> Bool {
     
     let parentMethod = parent?.textField(_:shouldChangeCharactersIn:replacementString:)
     
@@ -40,8 +40,8 @@ class TextFieldValidationEngine: TextFieldDelegateProxy {
   }
   
   private var alwaysAllow: (_ textField: UITextField,
-                            _ range: NSRange,
-                            _ replacementString: String) -> Bool {
+    _ range: NSRange,
+    _ replacementString: String) -> Bool {
     return { _, _, _ in true }
   }
 }

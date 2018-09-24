@@ -119,7 +119,12 @@ class TextFieldDecorationEngine: TextFieldDelegateProxy {
   
   private func setCaretPosition(offset: Int) {
     if let desiredCaretPosition = textField.position(from: textField.beginningOfDocument, offset: offset) {
-      textField.selectedTextRange = textField.textRange(from: desiredCaretPosition, to: desiredCaretPosition)
+      // FIXME: HACK to correctly move caret after inserting text from the clipboard
+      DispatchQueue.main.async { [weak self] in
+        guard let strongSelf = self else { return }
+
+        strongSelf.textField.selectedTextRange = strongSelf.textField.textRange(from: desiredCaretPosition, to: desiredCaretPosition)
+      }
     }
   }
 }

@@ -4,11 +4,12 @@ import UIKit
 class ViewController: UIViewController {
   
   let maskedTextField: MaskedTextField = MaskedTextField(
-    decorationTemplate: "__:__",
-    validator: { ($0 ?? "").count <= 4 }
+    decoration: .template("__:__"),
+    validation: .custom({ $0.count <= 4 })
   )
   
-  let anotherMaskedTextField = MaskedTextField(decorationTemplate: "__∞∞__")
+  let anotherMaskedTextField = MaskedTextField(decoration: .template("__∞∞__"))
+  
   var observation: NSKeyValueObservation?
   
   override func viewDidLoad() {

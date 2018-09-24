@@ -18,6 +18,8 @@
 		5B102C492156E93700D2A7BB /* PartialBirthCertificateNumberValidatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B102C442156E93700D2A7BB /* PartialBirthCertificateNumberValidatorTests.swift */; };
 		5B102C4B2156F05200D2A7BB /* StringValidatorTester.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B102C4A2156F05200D2A7BB /* StringValidatorTester.swift */; };
 		5B102C4D2156F3E500D2A7BB /* EmptyValidatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B102C4C2156F3E500D2A7BB /* EmptyValidatorTests.swift */; };
+		5B102C4F215815CA00D2A7BB /* TextFieldDecoration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B102C4E215815CA00D2A7BB /* TextFieldDecoration.swift */; };
+		5B102C512158160400D2A7BB /* TextFieldValidation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B102C502158160400D2A7BB /* TextFieldValidation.swift */; };
 		5BA09D52212DB764006371A9 /* UserIntentRecognizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BA09D51212DB764006371A9 /* UserIntentRecognizer.swift */; };
 		5BC0A41320E27D43006A6529 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BC0A41220E27D43006A6529 /* AppDelegate.swift */; };
 		5BC0A41520E27D43006A6529 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BC0A41420E27D43006A6529 /* ViewController.swift */; };
@@ -70,6 +72,8 @@
 		5B102C442156E93700D2A7BB /* PartialBirthCertificateNumberValidatorTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PartialBirthCertificateNumberValidatorTests.swift; sourceTree = "<group>"; };
 		5B102C4A2156F05200D2A7BB /* StringValidatorTester.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringValidatorTester.swift; sourceTree = "<group>"; };
 		5B102C4C2156F3E500D2A7BB /* EmptyValidatorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyValidatorTests.swift; sourceTree = "<group>"; };
+		5B102C4E215815CA00D2A7BB /* TextFieldDecoration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldDecoration.swift; sourceTree = "<group>"; };
+		5B102C502158160400D2A7BB /* TextFieldValidation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldValidation.swift; sourceTree = "<group>"; };
 		5BA09D51212DB764006371A9 /* UserIntentRecognizer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserIntentRecognizer.swift; sourceTree = "<group>"; };
 		5BC0A40F20E27D43006A6529 /* MaskedTextField.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MaskedTextField.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5BC0A41220E27D43006A6529 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -128,6 +132,7 @@
 			isa = PBXGroup;
 			children = (
 				5B102C3A2156DBDD00D2A7BB /* StringValidators.swift */,
+				5B102C502158160400D2A7BB /* TextFieldValidation.swift */,
 				5B102C392156DBDD00D2A7BB /* TextFieldValidationEngine.swift */,
 				5B102C3D2156DC6400D2A7BB /* Validator.swift */,
 			);
@@ -211,6 +216,7 @@
 				5B0F9CBF20F7E018005772B7 /* String+CharacterGroups.swift */,
 				5BC0A44520E27DBD006A6529 /* String+NSRange.swift */,
 				5BC0A44E20E27DBD006A6529 /* StringDecorator.swift */,
+				5B102C4E215815CA00D2A7BB /* TextFieldDecoration.swift */,
 				5BC0A44D20E27DBD006A6529 /* TextFieldDecorationEngine.swift */,
 				5BC0A45320E27DBE006A6529 /* TextFieldDelegateProxy.swift */,
 				5BC0A45220E27DBE006A6529 /* TextFieldSurgeon.swift */,
@@ -365,6 +371,7 @@
 			files = (
 				5BA09D52212DB764006371A9 /* UserIntentRecognizer.swift in Sources */,
 				5BC0A46420E27DBE006A6529 /* TextFieldDelegateProxy.swift in Sources */,
+				5B102C512158160400D2A7BB /* TextFieldValidation.swift in Sources */,
 				5BC0A46520E27DBE006A6529 /* MaskedTextField.swift in Sources */,
 				5BC0A41520E27D43006A6529 /* ViewController.swift in Sources */,
 				5BC0A41320E27D43006A6529 /* AppDelegate.swift in Sources */,
@@ -373,6 +380,7 @@
 				5B0F9CC020F7E018005772B7 /* String+CharacterGroups.swift in Sources */,
 				5BC0A45820E27DBE006A6529 /* String+NSRange.swift in Sources */,
 				5BC0A45C20E27DBE006A6529 /* BirthCertificateNumberStringDecorator.swift in Sources */,
+				5B102C4F215815CA00D2A7BB /* TextFieldDecoration.swift in Sources */,
 				5B102C3B2156DBDD00D2A7BB /* TextFieldValidationEngine.swift in Sources */,
 				5BC0A45E20E27DBE006A6529 /* TimeStringDecorator.swift in Sources */,
 				5BC0A45A20E27DBE006A6529 /* TemplateStringDecorator.swift in Sources */,

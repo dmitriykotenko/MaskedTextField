@@ -53,7 +53,14 @@ public class MaskedTextField: UITextField {
     case .custom(let customDecorator):
       decorator = customDecorator
     }
-    // Todo: update text field's text.
+
+    // Synchronize .text property with new decorator.
+    applyDecoration()
+  }
+  
+  private func applyDecoration() {
+    let currentText = text
+    text = currentText
   }
   
   /// Sets a filter which recognizes invalid values and does not allow to enter these values.

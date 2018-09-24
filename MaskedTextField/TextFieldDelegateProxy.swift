@@ -18,7 +18,7 @@ class TextFieldDelegateProxy: NSObject, UITextFieldDelegate {
       return true
     }
   }
-  
+
   func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
     if let textFieldShouldBeginEditingMethod = parent?.textFieldShouldBeginEditing(_:) {
       return textFieldShouldBeginEditingMethod(textField)
@@ -61,5 +61,24 @@ class TextFieldDelegateProxy: NSObject, UITextFieldDelegate {
     } else {
       return true
     }
+  }
+}
+
+
+extension TextFieldDelegateProxy {
+  
+  var askParent: (_ textField: UITextField,
+    _ range: NSRange,
+    _ replacementString: String) -> Bool {
+    
+    let parentMethod = parent?.textField(_:shouldChangeCharactersIn:replacementString:)
+    
+    return parentMethod ?? alwaysAllow
+  }
+  
+  private var alwaysAllow: (_ textField: UITextField,
+    _ range: NSRange,
+    _ replacementString: String) -> Bool {
+    return { _, _, _ in true }
   }
 }

@@ -29,19 +29,4 @@ class TextFieldValidationEngine: TextFieldDelegateProxy {
       return false
     }
   }
-  
-  private var askParent: (_ textField: UITextField,
-    _ range: NSRange,
-    _ replacementString: String) -> Bool {
-    
-    let parentMethod = parent?.textField(_:shouldChangeCharactersIn:replacementString:)
-    
-    return parentMethod ?? alwaysAllow
-  }
-  
-  private var alwaysAllow: (_ textField: UITextField,
-    _ range: NSRange,
-    _ replacementString: String) -> Bool {
-    return { _, _, _ in true }
-  }
 }

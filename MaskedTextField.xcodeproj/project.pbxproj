@@ -201,12 +201,8 @@
 				5BC0A45420E27DBE006A6529 /* MaskedTextField.swift */,
 				5BC0A45320E27DBE006A6529 /* TextFieldDelegateProxy.swift */,
 				5BC0A45220E27DBE006A6529 /* TextFieldSurgeon.swift */,
-				5BC0A41220E27D43006A6529 /* AppDelegate.swift */,
-				5BC0A41420E27D43006A6529 /* ViewController.swift */,
-				5BC0A41620E27D43006A6529 /* Main.storyboard */,
-				5BC0A41920E27D44006A6529 /* Assets.xcassets */,
-				5BC0A41B20E27D44006A6529 /* LaunchScreen.storyboard */,
 				5BC0A41E20E27D44006A6529 /* Info.plist */,
+				5BCE220021596F6E00F0CA5B /* SampleApp */,
 			);
 			path = MaskedTextField;
 			sourceTree = "<group>";
@@ -256,6 +252,18 @@
 				5BC0A44C20E27DBD006A6529 /* TimeStringDecorator.swift */,
 			);
 			path = Decorators;
+			sourceTree = "<group>";
+		};
+		5BCE220021596F6E00F0CA5B /* SampleApp */ = {
+			isa = PBXGroup;
+			children = (
+				5BC0A41220E27D43006A6529 /* AppDelegate.swift */,
+				5BC0A41420E27D43006A6529 /* ViewController.swift */,
+				5BC0A41620E27D43006A6529 /* Main.storyboard */,
+				5BC0A41920E27D44006A6529 /* Assets.xcassets */,
+				5BC0A41B20E27D44006A6529 /* LaunchScreen.storyboard */,
+			);
+			path = SampleApp;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

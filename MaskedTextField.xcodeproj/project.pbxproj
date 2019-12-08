@@ -180,7 +180,9 @@
 				5BC0A43120E27D45006A6529 /* MaskedTextFieldUITests */,
 				5BC0A41020E27D43006A6529 /* Products */,
 			);
+			indentWidth = 2;
 			sourceTree = "<group>";
+			tabWidth = 2;
 		};
 		5BC0A41020E27D43006A6529 /* Products */ = {
 			isa = PBXGroup;

@@ -25,7 +25,7 @@ class TemplateStringDecorator: StringDecorator {
   
   private var decoratedPrefix: [DecoratedCharacter] {
     return prefix.map {
-      insignificant($0)
+      .insignificant($0)
     }
   }
   
@@ -36,13 +36,8 @@ class TemplateStringDecorator: StringDecorator {
   }
   
   private func decorateCharacter(_ character: Character, at index: Int) -> [DecoratedCharacter] {
-    var result = suffix(for: index).map {
-      insignificant($0)
-    }
     
-    result.insert(significant(character), at: 0)
-    
-    return result
+    return [.significant(character)] + suffix(for: index).map { .insignificant($0) }
   }
   
   private func suffix(for index: Int) -> String {
@@ -51,19 +46,5 @@ class TemplateStringDecorator: StringDecorator {
     } else {
       return ""
     }
-  }
-  
-  private func significant(_ character: Character) -> DecoratedCharacter {
-    return DecoratedCharacter(
-      character: character,
-      isSignificant: true
-    )
-  }
-  
-  private func insignificant(_ character: Character) -> DecoratedCharacter {
-    return DecoratedCharacter(
-      character: character,
-      isSignificant: false
-    )
   }
 }

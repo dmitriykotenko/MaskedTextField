@@ -129,4 +129,18 @@ extension DecoratedString {
 struct DecoratedCharacter {
   let character: Character
   let isSignificant: Bool
+    
+  static func significant(_ character: Character) -> DecoratedCharacter {
+    return DecoratedCharacter(
+      character: character,
+      isSignificant: true
+    )
+  }
+  
+  static func insignificant(_ character: Character) -> DecoratedCharacter {
+    return DecoratedCharacter(
+      character: character,
+      isSignificant: false
+    )
+  }
 }

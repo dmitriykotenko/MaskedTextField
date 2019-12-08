@@ -25,6 +25,11 @@ public class MaskedTextField: UITextField {
       decoratedText = newValue.map(decorator.decorate)
       
       super.text = decoratedText?.value
+      
+      NotificationCenter.default.post(
+        name: Notification.Name.UITextFieldTextDidChange,
+        object: self
+      )
     }
     
     get {

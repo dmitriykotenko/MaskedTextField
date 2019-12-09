@@ -59,7 +59,7 @@ public class MaskedTextField: UITextField {
       decorator = customDecorator
     }
 
-    // Synchronize .text property with new decorator.
+    // Apply new decoration to current text.
     applyDecoration()
   }
   
@@ -103,6 +103,8 @@ public class MaskedTextField: UITextField {
   
   private var delegatesChain: [TextFieldDelegateProxy] = []
   private var externalDelegate: TextFieldDelegateProxy = TextFieldSurgeon()
+  
+  private var copyPaster: TextFieldCopyPaster?
   
   override init(frame: CGRect) {
     super.init(frame: frame)
@@ -155,6 +157,16 @@ public class MaskedTextField: UITextField {
     }
     
     setupDelegatesChain([sanitizationEngine, decorationEngine, validationEngine])
+    
+    guard let superDelegate = super.delegate else {
+      fatalError("super.delegate was not initialized.")
+    }
+    
+    copyPaster = TextFieldCopyPaster(
+      textField: self,
+      internalDelegate: superDelegate,
+      externalDelegate: externalDelegate
+    )
   }
   
   /// Build delegates chain for the text field.
@@ -178,5 +190,13 @@ public class MaskedTextField: UITextField {
     
     // The external delegate connects to the last delegate in the chain.
     delegatesChain.last?.parent = externalDelegate
+  }
+  
+  public override func cut(_ sender: Any?) {
+    copyPaster?.cut()
+  }
+  
+  public override func paste(_ sender: Any?) {
+    copyPaster?.paste()
   }
 }

@@ -52,7 +52,7 @@ class UserIntentRecognizer {
     
     return replacement.replacementString.isEmpty
       && replacement.rangeToBeReplaced.length > 0
-      && textField.selectedRange?.length == 0
+      && textField.selectedUtf16range?.length == 0
       && !firstReplacedCharacterIsSignificant
   }
   
@@ -71,20 +71,5 @@ class UserIntentRecognizer {
     } else {
       return range
     }
-  }
-}
-
-
-fileprivate extension UITextInput {
-  
-  var selectedRange: NSRange? {
-    guard let range = selectedTextRange else {
-      return nil
-    }
-    
-    let location = offset(from: beginningOfDocument, to: range.start)
-    let length = offset(from: range.start, to: range.end)
-    
-    return NSRange(location: location, length: length)
   }
 }

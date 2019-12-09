@@ -24,7 +24,9 @@
 		5B102C562159329F00D2A7BB /* TextFieldSanitizationEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B102C552159329F00D2A7BB /* TextFieldSanitizationEngine.swift */; };
 		5B102C582159366700D2A7BB /* StringSanitizers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B102C572159366700D2A7BB /* StringSanitizers.swift */; };
 		5B102C5A2159368F00D2A7BB /* Sanitizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B102C592159368F00D2A7BB /* Sanitizer.swift */; };
+		5B2A67AA239D810000EC4278 /* TextFieldCopyPaster.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B2A67A9239D810000EC4278 /* TextFieldCopyPaster.swift */; };
 		5BA09D52212DB764006371A9 /* UserIntentRecognizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BA09D51212DB764006371A9 /* UserIntentRecognizer.swift */; };
+		5BA6A1F0239E5C9500F519C6 /* UITextInput+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BA6A1EF239E5C9500F519C6 /* UITextInput+.swift */; };
 		5BC0A41320E27D43006A6529 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BC0A41220E27D43006A6529 /* AppDelegate.swift */; };
 		5BC0A41520E27D43006A6529 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BC0A41420E27D43006A6529 /* ViewController.swift */; };
 		5BC0A41820E27D43006A6529 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5BC0A41620E27D43006A6529 /* Main.storyboard */; };
@@ -82,7 +84,9 @@
 		5B102C552159329F00D2A7BB /* TextFieldSanitizationEngine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldSanitizationEngine.swift; sourceTree = "<group>"; };
 		5B102C572159366700D2A7BB /* StringSanitizers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringSanitizers.swift; sourceTree = "<group>"; };
 		5B102C592159368F00D2A7BB /* Sanitizer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sanitizer.swift; sourceTree = "<group>"; };
+		5B2A67A9239D810000EC4278 /* TextFieldCopyPaster.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextFieldCopyPaster.swift; sourceTree = "<group>"; };
 		5BA09D51212DB764006371A9 /* UserIntentRecognizer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserIntentRecognizer.swift; sourceTree = "<group>"; };
+		5BA6A1EF239E5C9500F519C6 /* UITextInput+.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UITextInput+.swift"; sourceTree = "<group>"; };
 		5BC0A40F20E27D43006A6529 /* MaskedTextField.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MaskedTextField.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5BC0A41220E27D43006A6529 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5BC0A41420E27D43006A6529 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -172,6 +176,14 @@
 			path = Sanitization;
 			sourceTree = "<group>";
 		};
+		5BA6A1F1239E5D9A00F519C6 /* CopyPasting */ = {
+			isa = PBXGroup;
+			children = (
+				5B2A67A9239D810000EC4278 /* TextFieldCopyPaster.swift */,
+			);
+			path = CopyPasting;
+			sourceTree = "<group>";
+		};
 		5BC0A40620E27D43006A6529 = {
 			isa = PBXGroup;
 			children = (
@@ -197,12 +209,14 @@
 		5BC0A41120E27D43006A6529 /* MaskedTextField */ = {
 			isa = PBXGroup;
 			children = (
+				5BA6A1F1239E5D9A00F519C6 /* CopyPasting */,
 				5BC0A44420E27DBD006A6529 /* Decoration */,
 				5B102C52215930ED00D2A7BB /* Sanitization */,
 				5B102C382156DBAB00D2A7BB /* Validation */,
 				5BC0A45420E27DBE006A6529 /* MaskedTextField.swift */,
 				5BC0A45320E27DBE006A6529 /* TextFieldDelegateProxy.swift */,
 				5BC0A45220E27DBE006A6529 /* TextFieldSurgeon.swift */,
+				5BA6A1EF239E5C9500F519C6 /* UITextInput+.swift */,
 				5BC0A41E20E27D44006A6529 /* Info.plist */,
 				5BCE220021596F6E00F0CA5B /* SampleApp */,
 			);
@@ -404,6 +418,8 @@
 				5B102C512158160400D2A7BB /* TextFieldValidation.swift in Sources */,
 				5BC0A46520E27DBE006A6529 /* MaskedTextField.swift in Sources */,
 				5BC0A41520E27D43006A6529 /* ViewController.swift in Sources */,
+				5BA6A1F0239E5C9500F519C6 /* UITextInput+.swift in Sources */,
+				5B2A67AA239D810000EC4278 /* TextFieldCopyPaster.swift in Sources */,
 				5BC0A41320E27D43006A6529 /* AppDelegate.swift in Sources */,
 				5BC0A45B20E27DBE006A6529 /* PhoneNumberStringDecorator.swift in Sources */,
 				5BC0A45D20E27DBE006A6529 /* EmptyStringDecorator.swift in Sources */,

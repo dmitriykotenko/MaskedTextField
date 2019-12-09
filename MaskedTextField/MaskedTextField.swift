@@ -68,20 +68,6 @@ public class MaskedTextField: UITextField {
     text = currentText
   }
   
-  /// Sets a filter which recognizes invalid values and does not allow to enter these values.
-  func setValidation(_ validation: TextFieldValidation) {
-    switch validation {
-    case .none:
-      validationEngine?.validator = StringValidators.empty
-    case .maximumLength(let length):
-      validationEngine?.validator = StringValidators.maximumLengthValidator(length)
-    case .regex(let pattern):
-      validationEngine?.validator = StringValidators.regexValidator(pattern)
-    case .custom(let customValidator):
-      validationEngine?.validator = customValidator
-    }    
-  }
-  
   /// Sets a filter which removes inappropriate characters from user input.
   func setSanitization(_ sanitization: TextFieldSanitization) {
     switch sanitization {
@@ -96,10 +82,24 @@ public class MaskedTextField: UITextField {
     }
   }
   
+  /// Sets a filter which prohibits text changing when new text is inappropriate.
+  func setValidation(_ validation: TextFieldValidation) {
+    switch validation {
+    case .none:
+      validationEngine?.validator = StringValidators.empty
+    case .maximumLength(let length):
+      validationEngine?.validator = StringValidators.maximumLengthValidator(length)
+    case .regex(let pattern):
+      validationEngine?.validator = StringValidators.regexValidator(pattern)
+    case .custom(let customValidator):
+      validationEngine?.validator = customValidator
+    }
+  }
+
   private var decorator: StringDecorator = EmptyStringDecorator()
   private var decorationEngine: TextFieldDecorationEngine?
-  private var validationEngine: TextFieldValidationEngine?
   private var sanitizationEngine: TextFieldSanitizationEngine?
+  private var validationEngine: TextFieldValidationEngine?
   
   private var delegatesChain: [TextFieldDelegateProxy] = []
   private var externalDelegate: TextFieldDelegateProxy = TextFieldSurgeon()
@@ -122,19 +122,19 @@ public class MaskedTextField: UITextField {
   ///
   /// - parameters:
   ///     - decoration: Rules to place auxiliary characters during the editing. E. g. for phone numbers the rules can be described as a template "+_ ___ ___-__-__". (Underscores represent text entered by the user. All other characters are auxiliary and placed automatically during the editing.) Default value is .none which means no decoration.
-  ///     - validation: A filter that prohibits the user to change field's text if new text is inappropriate. E. g. when entering time of day, the text is appropriate if it contains only digits and its length is less than or equal to 4. Default value is .none and means everything is valid.
   ///     - sanitization: Rules to remove single undesirable characters from user input. E. g. when the user inserts phone number via the clipboard, the number is usually formatted and looks like this: "+7 (900) 555-22-11". But we usually want to remove everything except digits and paste "79005552211". Default value in .none which means that every character is acceptable.
+  ///     - validation: A filter that prohibits the user to change field's text if new text is inappropriate. E. g. when entering time of day, the text is appropriate if it contains only digits and its length is less than or equal to 4. Default value is .none and means everything is valid.
   ///
   /// Validation and sanitization work only for user-initiated changes. They do not work when .text property is changed programmatically.
   /// Decoration works for both programmatic and user-initiated changes.
   public convenience init(decoration: TextFieldDecoration = .none,
-                          validation: TextFieldValidation = .none,
-                          sanitization: TextFieldSanitization = .none) {
+                          sanitization: TextFieldSanitization = .none,
+                          validation: TextFieldValidation = .none) {
     self.init(frame: .zero)
     
     setDecoration(decoration)
-    setValidation(validation)
     setSanitization(sanitization)
+    setValidation(validation)
   }
   
   private func privateInit() {
@@ -144,18 +144,18 @@ public class MaskedTextField: UITextField {
       fatalError("Could not initialize TextFieldDecorationEngine.")
     }
     
-    validationEngine = TextFieldValidationEngine()
-    
-    guard let validationEngine = validationEngine else {
-      fatalError("Could not initialize TextFieldValidationEngine.")
-    }
-    
     sanitizationEngine = TextFieldSanitizationEngine()
     
     guard let sanitizationEngine = sanitizationEngine else {
       fatalError("Could not initialize TextFieldSanitizationEngine.")
     }
     
+    validationEngine = TextFieldValidationEngine()
+    
+    guard let validationEngine = validationEngine else {
+      fatalError("Could not initialize TextFieldValidationEngine.")
+    }
+
     setupDelegatesChain([sanitizationEngine, decorationEngine, validationEngine])
     
     guard let superDelegate = super.delegate else {

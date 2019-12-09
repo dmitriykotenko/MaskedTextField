@@ -10,7 +10,7 @@
 		5B0F9CC020F7E018005772B7 /* String+CharacterGroups.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B0F9CBF20F7E018005772B7 /* String+CharacterGroups.swift */; };
 		5B102C3B2156DBDD00D2A7BB /* TextFieldValidationEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B102C392156DBDD00D2A7BB /* TextFieldValidationEngine.swift */; };
 		5B102C3C2156DBDD00D2A7BB /* StringValidators.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B102C3A2156DBDD00D2A7BB /* StringValidators.swift */; };
-		5B102C3E2156DC6400D2A7BB /* Validator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B102C3D2156DC6400D2A7BB /* Validator.swift */; };
+		5B102C3E2156DC6400D2A7BB /* StringValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B102C3D2156DC6400D2A7BB /* StringValidator.swift */; };
 		5B102C452156E93700D2A7BB /* PartialInternationalPassportNumberValidatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B102C402156E93600D2A7BB /* PartialInternationalPassportNumberValidatorTests.swift */; };
 		5B102C462156E93700D2A7BB /* PartialForeignDocumentNumberValidatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B102C412156E93600D2A7BB /* PartialForeignDocumentNumberValidatorTests.swift */; };
 		5B102C472156E93700D2A7BB /* PartialDateValidatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B102C422156E93600D2A7BB /* PartialDateValidatorTests.swift */; };
@@ -23,7 +23,7 @@
 		5B102C54215930FF00D2A7BB /* TextFieldSanitization.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B102C53215930FF00D2A7BB /* TextFieldSanitization.swift */; };
 		5B102C562159329F00D2A7BB /* TextFieldSanitizationEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B102C552159329F00D2A7BB /* TextFieldSanitizationEngine.swift */; };
 		5B102C582159366700D2A7BB /* StringSanitizers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B102C572159366700D2A7BB /* StringSanitizers.swift */; };
-		5B102C5A2159368F00D2A7BB /* Sanitizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B102C592159368F00D2A7BB /* Sanitizer.swift */; };
+		5B102C5A2159368F00D2A7BB /* StringSanitizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B102C592159368F00D2A7BB /* StringSanitizer.swift */; };
 		5B2A67AA239D810000EC4278 /* TextFieldCopyPaster.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B2A67A9239D810000EC4278 /* TextFieldCopyPaster.swift */; };
 		5BA09D52212DB764006371A9 /* UserIntentRecognizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BA09D51212DB764006371A9 /* UserIntentRecognizer.swift */; };
 		5BA6A1F0239E5C9500F519C6 /* UITextInput+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BA6A1EF239E5C9500F519C6 /* UITextInput+.swift */; };
@@ -70,7 +70,7 @@
 		5B0F9CBF20F7E018005772B7 /* String+CharacterGroups.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+CharacterGroups.swift"; sourceTree = "<group>"; };
 		5B102C392156DBDD00D2A7BB /* TextFieldValidationEngine.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextFieldValidationEngine.swift; sourceTree = "<group>"; };
 		5B102C3A2156DBDD00D2A7BB /* StringValidators.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StringValidators.swift; sourceTree = "<group>"; };
-		5B102C3D2156DC6400D2A7BB /* Validator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Validator.swift; sourceTree = "<group>"; };
+		5B102C3D2156DC6400D2A7BB /* StringValidator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringValidator.swift; sourceTree = "<group>"; };
 		5B102C402156E93600D2A7BB /* PartialInternationalPassportNumberValidatorTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PartialInternationalPassportNumberValidatorTests.swift; sourceTree = "<group>"; };
 		5B102C412156E93600D2A7BB /* PartialForeignDocumentNumberValidatorTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PartialForeignDocumentNumberValidatorTests.swift; sourceTree = "<group>"; };
 		5B102C422156E93600D2A7BB /* PartialDateValidatorTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PartialDateValidatorTests.swift; sourceTree = "<group>"; };
@@ -83,7 +83,7 @@
 		5B102C53215930FF00D2A7BB /* TextFieldSanitization.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldSanitization.swift; sourceTree = "<group>"; };
 		5B102C552159329F00D2A7BB /* TextFieldSanitizationEngine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldSanitizationEngine.swift; sourceTree = "<group>"; };
 		5B102C572159366700D2A7BB /* StringSanitizers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringSanitizers.swift; sourceTree = "<group>"; };
-		5B102C592159368F00D2A7BB /* Sanitizer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sanitizer.swift; sourceTree = "<group>"; };
+		5B102C592159368F00D2A7BB /* StringSanitizer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringSanitizer.swift; sourceTree = "<group>"; };
 		5B2A67A9239D810000EC4278 /* TextFieldCopyPaster.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextFieldCopyPaster.swift; sourceTree = "<group>"; };
 		5BA09D51212DB764006371A9 /* UserIntentRecognizer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserIntentRecognizer.swift; sourceTree = "<group>"; };
 		5BA6A1EF239E5C9500F519C6 /* UITextInput+.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UITextInput+.swift"; sourceTree = "<group>"; };
@@ -143,10 +143,10 @@
 		5B102C382156DBAB00D2A7BB /* Validation */ = {
 			isa = PBXGroup;
 			children = (
+				5B102C3D2156DC6400D2A7BB /* StringValidator.swift */,
 				5B102C3A2156DBDD00D2A7BB /* StringValidators.swift */,
 				5B102C502158160400D2A7BB /* TextFieldValidation.swift */,
 				5B102C392156DBDD00D2A7BB /* TextFieldValidationEngine.swift */,
-				5B102C3D2156DC6400D2A7BB /* Validator.swift */,
 			);
 			path = Validation;
 			sourceTree = "<group>";
@@ -168,7 +168,7 @@
 		5B102C52215930ED00D2A7BB /* Sanitization */ = {
 			isa = PBXGroup;
 			children = (
-				5B102C592159368F00D2A7BB /* Sanitizer.swift */,
+				5B102C592159368F00D2A7BB /* StringSanitizer.swift */,
 				5B102C572159366700D2A7BB /* StringSanitizers.swift */,
 				5B102C53215930FF00D2A7BB /* TextFieldSanitization.swift */,
 				5B102C552159329F00D2A7BB /* TextFieldSanitizationEngine.swift */,
@@ -441,9 +441,9 @@
 				5BC0A46320E27DBE006A6529 /* TextFieldSurgeon.swift in Sources */,
 				5BC0A46020E27DBE006A6529 /* StringDecorator.swift in Sources */,
 				5BC0A46120E27DBE006A6529 /* DecoratedString.swift in Sources */,
-				5B102C5A2159368F00D2A7BB /* Sanitizer.swift in Sources */,
+				5B102C5A2159368F00D2A7BB /* StringSanitizer.swift in Sources */,
 				5BC0A45920E27DBE006A6529 /* TextReplacementOperation.swift in Sources */,
-				5B102C3E2156DC6400D2A7BB /* Validator.swift in Sources */,
+				5B102C3E2156DC6400D2A7BB /* StringValidator.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -1,21 +1,21 @@
 /// Validators for different kinds of strings.
 public enum StringValidators {
   
-  static let empty: Validator<String> = { _ in true }
+  static let empty: StringValidator = FunctionStringValidator { _ in true }
   
-  static let partialDate: Validator<String> = { string in
+  static let partialDate: StringValidator = FunctionStringValidator { string in
     regexCheck(string, pattern: "^[0-9]{0,8}$")
   }
   
-  static let partialRussianPassportNumber: Validator<String> = { string in
+  static let partialRussianPassportNumber: StringValidator = FunctionStringValidator { string in
     regexCheck(string, pattern: "^[0-9]{0,10}$")
   }
   
-  static let partialInternationalPassportNumber: Validator<String> = { string in
+  static let partialInternationalPassportNumber: StringValidator = FunctionStringValidator { string in
     regexCheck(string, pattern: "^[0-9]{0,9}$")
   }
   
-  static let partialBirthCertificateNumber: Validator<String> = { string in
+  static let partialBirthCertificateNumber: StringValidator = FunctionStringValidator { string in
     let uppercasedString = string.uppercased()
     
     let romanDigitsSection = "[" + String.romanDigits + "]{0,10}"
@@ -28,17 +28,17 @@ public enum StringValidators {
     )
   }
   
-  static let partialForeignDocumentNumber: Validator<String> = { string in
+  static let partialForeignDocumentNumber: StringValidator = FunctionStringValidator { string in
     /// Only spaces are prohibited.
     return regexCheck(string, pattern: "^\\S*$")
   }
   
-  static func maximumLengthValidator(_ length: Int) -> Validator<String> {
-    return { string in string.count <= length }
+  static func maximumLengthValidator(_ length: Int) -> StringValidator {
+    return FunctionStringValidator { string in string.count <= length }
   }
   
-  static func regexValidator(_ pattern: String) -> Validator<String> {
-    return { string in regexCheck(string, pattern: pattern) }
+  static func regexValidator(_ pattern: String) -> StringValidator {
+    return FunctionStringValidator { string in regexCheck(string, pattern: pattern) }
   }
 }
 

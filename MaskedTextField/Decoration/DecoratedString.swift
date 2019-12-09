@@ -127,6 +127,7 @@ extension DecoratedString {
 
 // A character marked as significant or not significant.
 public struct DecoratedCharacter {
+  
   let character: Character
   let isSignificant: Bool
     

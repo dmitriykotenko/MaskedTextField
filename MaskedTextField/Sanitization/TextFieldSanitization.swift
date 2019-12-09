@@ -13,6 +13,9 @@ public enum TextFieldSanitization {
   /// Remove all characters belonging to specified character set.
   case reject(CharacterSet)
   
-  /// Custom sanitization.
-  case custom((String) -> String)
+  /// Use given function as sanitizer.
+  case function((String) -> String)
+
+  /// Use custom sanitizer.
+  case custom(StringSanitizer)
 }

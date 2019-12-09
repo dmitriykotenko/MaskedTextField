@@ -72,11 +72,13 @@ public class MaskedTextField: UITextField {
   func setSanitization(_ sanitization: TextFieldSanitization) {
     switch sanitization {
     case .none:
-      sanitizationEngine?.sanitizer = { $0 }
+      sanitizationEngine?.sanitizer = StringSanitizers.empty
     case .accept(let allowedCharacters):
       sanitizationEngine?.sanitizer = StringSanitizers.prohibitedCharactersSanitizer(allowedCharacters.inverted)
     case .reject(let prohibitedCharacters):
       sanitizationEngine?.sanitizer = StringSanitizers.prohibitedCharactersSanitizer(prohibitedCharacters)
+    case .function(let function):
+      sanitizationEngine?.sanitizer = FunctionStringSanitizer(function: function)
     case .custom(let customSanitizer):
       sanitizationEngine?.sanitizer = customSanitizer
     }
@@ -91,6 +93,8 @@ public class MaskedTextField: UITextField {
       validationEngine?.validator = StringValidators.maximumLengthValidator(length)
     case .regex(let pattern):
       validationEngine?.validator = StringValidators.regexValidator(pattern)
+    case .function(let function):
+      validationEngine?.validator = FunctionStringValidator(function: function)
     case .custom(let customValidator):
       validationEngine?.validator = customValidator
     }

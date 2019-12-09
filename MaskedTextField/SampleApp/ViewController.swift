@@ -6,7 +6,7 @@ class ViewController: UIViewController {
   let maskedTextField: MaskedTextField = MaskedTextField(
     decoration: .template("__:__"),
     sanitization: .accept(.decimalDigits),
-    validation: .custom({ $0.count <= 4 })
+    validation: .function({ $0.count <= 4 })
   )
   
   let anotherMaskedTextField = MaskedTextField(decoration: .template("__∞∞__"))

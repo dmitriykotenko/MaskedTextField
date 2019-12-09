@@ -4,7 +4,7 @@ import Foundation
 /// A string with every character marked as significant or not significant.
 public struct DecoratedString {
   
-  fileprivate let characters: [DecoratedCharacter]
+  private let characters: [DecoratedCharacter]
   
   init(characters: [DecoratedCharacter]) {
     self.characters = characters
@@ -75,7 +75,7 @@ public struct DecoratedString {
   func indexOfFirstSignificantCharacter(toTheRightFrom targetIndex: Int) -> Int? {
     let charactersToTheRight = characters.suffix(from: targetIndex)
     
-    return charactersToTheRight.index(where: { $0.isSignificant })
+    return charactersToTheRight.firstIndex { $0.isSignificant }
   }
 }
 
@@ -126,7 +126,7 @@ extension DecoratedString {
 
 
 // A character marked as significant or not significant.
-struct DecoratedCharacter {
+public struct DecoratedCharacter {
   let character: Character
   let isSignificant: Bool
     

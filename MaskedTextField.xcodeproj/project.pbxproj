@@ -350,13 +350,16 @@
 				TargetAttributes = {
 					5BC0A40E20E27D43006A6529 = {
 						CreatedOnToolsVersion = 9.4.1;
+						LastSwiftMigration = 1120;
 					};
 					5BC0A42220E27D45006A6529 = {
 						CreatedOnToolsVersion = 9.4.1;
+						LastSwiftMigration = 1120;
 						TestTargetID = 5BC0A40E20E27D43006A6529;
 					};
 					5BC0A42D20E27D45006A6529 = {
 						CreatedOnToolsVersion = 9.4.1;
+						LastSwiftMigration = 1120;
 						TestTargetID = 5BC0A40E20E27D43006A6529;
 					};
 				};
@@ -629,7 +632,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = fiasko.MaskedTextField;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -647,7 +650,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = fiasko.MaskedTextField;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
@@ -667,7 +670,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = fiasko.MaskedTextFieldTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/MaskedTextField.app/MaskedTextField";
 			};
@@ -688,7 +691,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = fiasko.MaskedTextFieldTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/MaskedTextField.app/MaskedTextField";
 			};
@@ -708,7 +711,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = fiasko.MaskedTextFieldUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_TARGET_NAME = MaskedTextField;
 			};
@@ -728,7 +731,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = fiasko.MaskedTextFieldUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_TARGET_NAME = MaskedTextField;
 			};

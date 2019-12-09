@@ -27,7 +27,7 @@ public class MaskedTextField: UITextField {
       super.text = decoratedText?.value
       
       NotificationCenter.default.post(
-        name: Notification.Name.UITextFieldTextDidChange,
+        name: UITextField.textDidChangeNotification,
         object: self
       )
     }
@@ -157,7 +157,7 @@ public class MaskedTextField: UITextField {
     }
 
     setupDelegatesChain([sanitizationEngine, decorationEngine, validationEngine])
-    
+
     guard let superDelegate = super.delegate else {
       fatalError("super.delegate was not initialized.")
     }
@@ -180,12 +180,10 @@ public class MaskedTextField: UITextField {
     super.delegate = delegatesChain.first
     
     // Every subsequent delegate connects to its predecessor.
-    if delegatesChain.count > 1 {
-      let parents = delegatesChain.suffix(from: 1)
-      
-      for (child, parent) in zip(delegatesChain, parents) {
-        child.parent = parent
-      }
+    let parents = delegatesChain.dropFirst()
+    
+    for (child, parent) in zip(delegatesChain, parents) {
+      child.parent = parent
     }
     
     // The external delegate connects to the last delegate in the chain.

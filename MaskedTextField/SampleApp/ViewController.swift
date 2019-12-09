@@ -21,7 +21,7 @@ class ViewController: UIViewController {
     addKeyValueObserverForMaskedTextField()
   }
   
-  fileprivate func addMaskedTextField() {
+  private func addMaskedTextField() {
     maskedTextField.translatesAutoresizingMaskIntoConstraints = false
     view.addSubview(maskedTextField)
     
@@ -31,7 +31,7 @@ class ViewController: UIViewController {
     maskedTextField.backgroundColor = UIColor.orange.withAlphaComponent(0.1)
   }
   
-  fileprivate func addAnotherMaskedTextField() {
+  private func addAnotherMaskedTextField() {
     anotherMaskedTextField.translatesAutoresizingMaskIntoConstraints = false
     view.addSubview(anotherMaskedTextField)
     

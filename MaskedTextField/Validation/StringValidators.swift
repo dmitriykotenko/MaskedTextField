@@ -43,7 +43,7 @@ public enum StringValidators {
 }
 
 
-fileprivate func regexCheck(_ string: String,
-                            pattern: String) -> Bool {
+private func regexCheck(_ string: String,
+                        pattern: String) -> Bool {
   return string.range(of: pattern, options: .regularExpression) != nil
 }

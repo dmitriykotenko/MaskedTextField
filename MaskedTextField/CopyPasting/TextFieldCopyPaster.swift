@@ -70,7 +70,7 @@ class TextFieldCopyPaster {
 }
 
 
-fileprivate extension MaskedTextField {
+private extension MaskedTextField {
   
   var selectedText: String? {
     guard

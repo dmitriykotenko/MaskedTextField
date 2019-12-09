@@ -7,7 +7,7 @@ import UIKit
 /// to erase the closest significant character to the left of the caret.
 class UserIntentRecognizer {
   
-  private var textField: MaskedTextField
+  private weak var textField: MaskedTextField?
   
   init(textField: MaskedTextField) {
     self.textField = textField
@@ -25,7 +25,7 @@ class UserIntentRecognizer {
   }
   
   private func convertRangeFrom(utf16range: NSRange) -> NSRange {
-    if let decoratedText = textField.decoratedText {
+    if let decoratedText = decoratedText {
       return decoratedText.rangeFromUtf16Range(utf16range)
     } else {
       return utf16range
@@ -48,17 +48,18 @@ class UserIntentRecognizer {
   
   private func shouldExpandRangeToFirstSignificantCharacter(replacement: TextReplacementOperation) -> Bool {
     let firstReplacedCharacterIsSignificant =
-      textField.decoratedText?.isCharacterSignificant(at: replacement.rangeToBeReplaced.location) ?? false
+      decoratedText?.isCharacterSignificant(at: replacement.rangeToBeReplaced.location)
+      ?? false
     
     return replacement.replacementString.isEmpty
       && replacement.rangeToBeReplaced.length > 0
-      && textField.selectedUtf16range?.length == 0
+      && textField?.selectedUtf16range?.length == 0
       && !firstReplacedCharacterIsSignificant
   }
   
   private func expandToFirstSignificantCharacter(range: NSRange) -> NSRange {
     if let firstSignificantCharacterPosition =
-      textField.decoratedText?.indexOfFirstSignificantCharacter(toTheLeftFrom: range.location) {
+      decoratedText?.indexOfFirstSignificantCharacter(toTheLeftFrom: range.location) {
       
       let expandedLength = range.length + (range.location - firstSignificantCharacterPosition)
       
@@ -71,5 +72,9 @@ class UserIntentRecognizer {
     } else {
       return range
     }
+  }
+  
+  private var decoratedText: DecoratedString? {
+    return textField?.decoratedText
   }
 }

@@ -4,7 +4,7 @@ import UIKit
 /// Automatically places auxiliary characters during editing of a text field.
 class TextFieldDecorationEngine: TextFieldDelegateProxy {
   
-  private var textField: MaskedTextField
+  private weak var textField: MaskedTextField?
   private var userIntentRecognizer: UserIntentRecognizer
   
   init(textField: MaskedTextField) {
@@ -49,7 +49,7 @@ class TextFieldDecorationEngine: TextFieldDelegateProxy {
   }
   
   private func significantRange(from range: NSRange) -> NSRange {
-    if let decoratedText = textField.decoratedText {
+    if let decoratedText = decoratedText {
       return decoratedText.significantRange(from: range)
     } else {
       return range
@@ -57,28 +57,29 @@ class TextFieldDecorationEngine: TextFieldDelegateProxy {
   }
   
   private func performEmptyReplacement() {
-    if let currentRange = textField.selectedTextRange {
-      let desiredRange = textField.textRange(from: currentRange.start, to: currentRange.start)
-      
-      textField.selectedTextRange = desiredRange
+    if let currentRange = textField?.selectedTextRange {
+      moveCaret(to: currentRange.start)
     }
   }
   
   /// Asks text field's delegate whether we need to perform text replacement.
   private func shouldPerformReplacement(_ replacement: TextReplacementOperation) -> Bool {
-    if let method = parent?.textField(_:shouldChangeCharactersIn:replacementString:) {
-      return method(
-        textField,
-        replacement.rangeToBeReplaced,
-        replacement.replacementString
-      )
-    } else {
-      return true
-    }
+    guard
+      let textField = textField,
+      let method = parent?.textField(_:shouldChangeCharactersIn:replacementString:)
+      else { return true }
+
+    return method(
+      textField,
+      replacement.rangeToBeReplaced,
+      replacement.replacementString
+    )
   }
   
   private func performSignificantReplacement(_ replacement: TextReplacementOperation) {
     assert(!replacement.isEmpty)
+    
+    guard let textField = textField else { return }
     
     let currentText = textField.text ?? ""
     
@@ -91,18 +92,16 @@ class TextFieldDecorationEngine: TextFieldDelegateProxy {
   }
   
   private func significantUtf16range(from significantRange: NSRange) -> NSRange {
-    guard let decoratedText = textField.decoratedText else {
+    if let decoratedText = decoratedText {
+      return decoratedText.significantUtf16range(from: significantRange)
+    } else {
       return significantRange
     }
-    
-    return decoratedText.significantUtf16range(from: significantRange)
   }
   
   /// Moves the caret to desired position after the text replacement is complete.
   private func adjustCaretPosition(after replacement: TextReplacementOperation) {
-    guard let decoratedText = textField.decoratedText else {
-      return
-    }
+    guard let decoratedText = decoratedText else { return }
     
     let significantRangeEnd = replacement.rangeToBeReplaced.location + replacement.replacementString.count
     let decoratedRangeEnd = decoratedText.index(from: significantRangeEnd)
@@ -118,11 +117,23 @@ class TextFieldDecorationEngine: TextFieldDelegateProxy {
   }
   
   private func setCaretPosition(offset: Int) {
+    guard let textField = textField else { return }
+    
     if let desiredCaretPosition = textField.position(from: textField.beginningOfDocument, offset: offset) {
-        textField.selectedTextRange = textField.textRange(
-          from: desiredCaretPosition,
-          to: desiredCaretPosition
-      )
+      moveCaret(to: desiredCaretPosition)
     }
+  }
+  
+  private func moveCaret(to desiredCaretPosition: UITextPosition) {
+      guard let textField = textField else { return }
+      
+      textField.selectedTextRange = textField.textRange(
+        from: desiredCaretPosition,
+        to: desiredCaretPosition
+    )
+  }
+  
+  private var decoratedText: DecoratedString? {
+    return textField?.decoratedText
   }
 }

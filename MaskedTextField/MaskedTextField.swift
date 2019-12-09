@@ -12,11 +12,11 @@ public class MaskedTextField: UITextField {
   
   public override var delegate: UITextFieldDelegate? {
     set {
-      externalDelegate.parent = newValue
+      outerDelegate.parent = newValue
     }
     
     get {
-      return externalDelegate.parent
+      return outerDelegate.parent
     }
   }
   
@@ -102,7 +102,7 @@ public class MaskedTextField: UITextField {
   private var validationEngine: TextFieldValidationEngine?
   
   private var delegatesChain: [TextFieldDelegateProxy] = []
-  private var externalDelegate: TextFieldDelegateProxy = TextFieldSurgeon()
+  private var outerDelegate: TextFieldDelegateProxy = TextFieldSurgeon()
   
   private var copyPaster: TextFieldCopyPaster?
   
@@ -164,15 +164,15 @@ public class MaskedTextField: UITextField {
     
     copyPaster = TextFieldCopyPaster(
       textField: self,
-      internalDelegate: superDelegate,
-      externalDelegate: externalDelegate
+      innerDelegate: superDelegate,
+      outerDelegate: outerDelegate
     )
   }
   
   /// Build delegates chain for the text field.
   ///
   /// The first delegate in the chain connects directly to the text field.
-  /// The .externalDelegate connects to the last delegate in the chain.
+  /// The .outerDelegate connects to the last delegate in the chain.
   private func setupDelegatesChain(_ delegates: [TextFieldDelegateProxy]) {
     delegatesChain = delegates
     
@@ -187,7 +187,7 @@ public class MaskedTextField: UITextField {
     }
     
     // The external delegate connects to the last delegate in the chain.
-    delegatesChain.last?.parent = externalDelegate
+    delegatesChain.last?.parent = outerDelegate
   }
   
   public override func cut(_ sender: Any?) {

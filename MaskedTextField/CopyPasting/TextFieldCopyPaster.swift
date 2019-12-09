@@ -5,17 +5,17 @@ import UIKit
 class TextFieldCopyPaster {
   
   private weak var textField: MaskedTextField?
-  private let internalDelegate: UITextFieldDelegate
-  private let externalDelegate: UITextFieldDelegate
+  private let innerDelegate: UITextFieldDelegate
+  private let outerDelegate: UITextFieldDelegate
   
   private let pasteboard = UIPasteboard.general
   
   init(textField: MaskedTextField,
-       internalDelegate: UITextFieldDelegate,
-       externalDelegate: UITextFieldDelegate) {
+       innerDelegate: UITextFieldDelegate,
+       outerDelegate: UITextFieldDelegate) {
     self.textField = textField
-    self.internalDelegate = internalDelegate
-    self.externalDelegate = externalDelegate
+    self.innerDelegate = innerDelegate
+    self.outerDelegate = outerDelegate
   }
   
   func cut() {
@@ -26,7 +26,7 @@ class TextFieldCopyPaster {
       let selectedSignificantRange = textField.selectedSignificantRange
       else { return }
     
-    let shouldCut = externalDelegate.textField?(
+    let shouldCut = outerDelegate.textField?(
       textField,
       shouldChangeCharactersIn: selectedSignificantRange,
       replacementString: ""
@@ -38,7 +38,7 @@ class TextFieldCopyPaster {
     pasteboard.string = selectedText
     
     // 2. Remove selected text from the screen.
-    _ = internalDelegate.textField?(
+    _ = innerDelegate.textField?(
       textField,
       shouldChangeCharactersIn: selectedUtf16range,
       replacementString: ""
@@ -57,7 +57,7 @@ class TextFieldCopyPaster {
       let pastedText = pasteboard.strings.map ({ $0.joined(separator: " ") })
       else { return }
     
-    _ = internalDelegate.textField?(
+    _ = innerDelegate.textField?(
       textField,
       shouldChangeCharactersIn: selectedUtf16range,
       replacementString: pastedText

@@ -69,9 +69,11 @@ class TextFieldDecorationEngine: TextFieldDelegateProxy {
       let method = parent?.textField(_:shouldChangeCharactersIn:replacementString:)
       else { return true }
 
+    // UITextFieldDelegate uses UTF-16-based offsets for range.
+    // Hence we must convert corrected range back to UTF-16-based format.
     return method(
       textField,
-      replacement.rangeToBeReplaced,
+      significantUtf16range(from: replacement.rangeToBeReplaced),
       replacement.replacementString
     )
   }

@@ -39,66 +39,6 @@ public class MaskedTextField: UITextField {
   
   /// Text field's current text with every character marked as significant or not significant.
   var decoratedText: DecoratedString?
-  
-  /// Sets rules to place auxiliary characters when editing a text field.
-  ///
-  /// In most cases the rules can be described as some template.
-  /// E. g., the template for the phone number could be "+_ ___ ___-__-__".
-  /// (In this case, when the user enters "79001113355", the onscreen text will be +7 900 111-33-55".).
-  /// Underscores represent text entered by the user.
-  /// Every character except underscore considered auxiliary.
-  ///
-  /// For elaborate cases, custom decorator can be specified via .custom option.
-  func setDecoration(_ decoration: TextFieldDecoration) {
-    switch decoration {
-    case .none:
-      decorator = EmptyStringDecorator()
-    case .template(let template):
-      decorator = TemplateStringDecorator(template: template)
-    case .custom(let customDecorator):
-      decorator = customDecorator
-    }
-
-    // Apply new decoration to current text.
-    applyDecoration()
-  }
-  
-  private func applyDecoration() {
-    let currentText = text
-    text = currentText
-  }
-  
-  /// Sets a filter which removes inappropriate characters from user input.
-  func setSanitization(_ sanitization: TextFieldSanitization) {
-    switch sanitization {
-    case .none:
-      sanitizationEngine?.sanitizer = StringSanitizers.empty
-    case .accept(let allowedCharacters):
-      sanitizationEngine?.sanitizer = StringSanitizers.prohibitedCharactersSanitizer(allowedCharacters.inverted)
-    case .reject(let prohibitedCharacters):
-      sanitizationEngine?.sanitizer = StringSanitizers.prohibitedCharactersSanitizer(prohibitedCharacters)
-    case .function(let function):
-      sanitizationEngine?.sanitizer = FunctionStringSanitizer(function: function)
-    case .custom(let customSanitizer):
-      sanitizationEngine?.sanitizer = customSanitizer
-    }
-  }
-  
-  /// Sets a filter which prohibits text changing when new text is inappropriate.
-  func setValidation(_ validation: TextFieldValidation) {
-    switch validation {
-    case .none:
-      validationEngine?.validator = StringValidators.empty
-    case .maximumLength(let length):
-      validationEngine?.validator = StringValidators.maximumLengthValidator(length)
-    case .regex(let pattern):
-      validationEngine?.validator = StringValidators.regexValidator(pattern)
-    case .function(let function):
-      validationEngine?.validator = FunctionStringValidator(function: function)
-    case .custom(let customValidator):
-      validationEngine?.validator = customValidator
-    }
-  }
 
   private var decorator: StringDecorator = EmptyStringDecorator()
   private var decorationEngine: TextFieldDecorationEngine?
@@ -194,6 +134,37 @@ public class MaskedTextField: UITextField {
     delegatesChain.last?.parent = outerDelegate
   }
   
+  /// Sets rules to place auxiliary characters when editing a text field.
+  ///
+  /// In most cases the rules can be described as some template.
+  /// E. g., the template for the phone number could be "+_ ___ ___-__-__".
+  /// (In this case, when the user enters "79001113355", the onscreen text will be +7 900 111-33-55".).
+  /// Underscores represent text entered by the user.
+  /// Every character except underscore considered auxiliary.
+  ///
+  /// For elaborate cases, custom decorator can be specified via .custom option.
+  func setDecoration(_ decoration: TextFieldDecoration) {
+    decorator = decoration.parse()
+
+    // Apply new decoration to current text.
+    applyDecoration()
+  }
+  
+  /// Sets a filter which removes inappropriate characters from user input.
+  func setSanitization(_ sanitization: TextFieldSanitization) {
+    sanitizationEngine?.sanitizer = sanitization.parse()
+  }
+  
+  /// Sets a filter which prohibits text changing when new text is inappropriate.
+  func setValidation(_ validation: TextFieldValidation) {
+    validationEngine?.validator = validation.parse()
+  }
+  
+  private func applyDecoration() {
+    let currentText = text
+    text = currentText
+  }
+
   public override func cut(_ sender: Any?) {
     copyPaster?.cut()
   }

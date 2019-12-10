@@ -9,4 +9,15 @@ public enum TextFieldDecoration {
   
   /// Custom decorator for MaskedTextField.
   case custom(StringDecorator)
+  
+  func parse() -> StringDecorator {
+    switch self {
+    case .none:
+      return EmptyStringDecorator()
+    case .template(let template):
+      return TemplateStringDecorator(template: template)
+    case .custom(let customDecorator):
+      return customDecorator
+    }
+  }
 }

@@ -23,4 +23,19 @@ public enum TextFieldValidation {
 
   /// Custom validation for MaskedTextField.
   case custom(StringValidator)
+  
+  func parse() -> StringValidator {
+    switch self {
+    case .none:
+      return StringValidators.empty
+    case .maximumLength(let length):
+      return StringValidators.maximumLengthValidator(length)
+    case .regex(let pattern):
+      return StringValidators.regexValidator(pattern)
+    case .function(let function):
+      return FunctionStringValidator(function: function)
+    case .custom(let customValidator):
+      return customValidator
+    }
+  }
 }

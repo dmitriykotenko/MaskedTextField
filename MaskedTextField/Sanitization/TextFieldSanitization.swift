@@ -18,4 +18,19 @@ public enum TextFieldSanitization {
 
   /// Use custom sanitizer.
   case custom(StringSanitizer)
+  
+  func parse() -> StringSanitizer {
+    switch self {
+    case .none:
+      return StringSanitizers.empty
+    case .accept(let allowedCharacters):
+      return StringSanitizers.prohibitedCharactersSanitizer(allowedCharacters.inverted)
+    case .reject(let prohibitedCharacters):
+      return StringSanitizers.prohibitedCharactersSanitizer(prohibitedCharacters)
+    case .function(let function):
+      return FunctionStringSanitizer(function: function)
+    case .custom(let customSanitizer):
+      return customSanitizer
+    }
+  }
 }

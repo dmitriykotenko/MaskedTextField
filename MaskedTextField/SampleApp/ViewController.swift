@@ -11,6 +11,8 @@ class ViewController: UIViewController {
   
   let anotherMaskedTextField = MaskedTextField(decoration: .template("__∞∞__"))
   
+  let uiTextField = UITextField()
+
   var observation: NSKeyValueObservation?
   
   override func viewDidLoad() {
@@ -18,6 +20,7 @@ class ViewController: UIViewController {
     
     addMaskedTextField()
     addAnotherMaskedTextField()
+    addUiTextField()
     addKeyValueObserverForMaskedTextField()
   }
   
@@ -41,7 +44,18 @@ class ViewController: UIViewController {
     anotherMaskedTextField.backgroundColor = UIColor.blue.withAlphaComponent(0.1)
   }
   
-  fileprivate func addKeyValueObserverForMaskedTextField() {
+  private func addUiTextField() {
+    uiTextField.textContentType = .telephoneNumber
+    uiTextField.translatesAutoresizingMaskIntoConstraints = false
+    view.addSubview(uiTextField)
+    
+    uiTextField.topAnchor.constraint(equalTo: view.topAnchor, constant: 240).isActive = true
+    uiTextField.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+    uiTextField.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20).isActive = true
+    uiTextField.backgroundColor = UIColor.red.withAlphaComponent(0.1)
+  }
+
+  private func addKeyValueObserverForMaskedTextField() {
     maskedTextField.addObserver(self, forKeyPath: "text", options: [.old, .new], context: nil)
   }
   

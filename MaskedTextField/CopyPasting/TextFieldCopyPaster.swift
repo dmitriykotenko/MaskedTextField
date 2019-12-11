@@ -23,12 +23,12 @@ class TextFieldCopyPaster {
       let textField = textField,
       let selectedText = textField.selectedText,
       let selectedUtf16range = textField.selectedUtf16range,
-      let selectedSignificantRange = textField.selectedSignificantRange
+      let selectedSignificantUtf16range = textField.selectedSignificantUtf16range
       else { return }
     
     let shouldCut = outerDelegate.textField?(
       textField,
-      shouldChangeCharactersIn: selectedSignificantRange,
+      shouldChangeCharactersIn: selectedSignificantUtf16range,
       replacementString: ""
     ) ?? true
     
@@ -90,9 +90,12 @@ private extension MaskedTextField {
     return decoratedText?.rangeFromUtf16Range(selectedUtf16range)
   }
   
-  var selectedSignificantRange: NSRange? {
-    guard let selectedRange = selectedRange else { return nil }
+  var selectedSignificantUtf16range: NSRange? {
+    guard
+      let selectedRange = selectedRange,
+      let significantRange = decoratedText?.significantRange(from: selectedRange)
+      else { return nil }
     
-    return decoratedText?.significantRange(from: selectedRange)
+    return decoratedText?.significantUtf16range(from: significantRange)
   }
 }

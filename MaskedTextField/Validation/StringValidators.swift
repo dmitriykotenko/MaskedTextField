@@ -22,17 +22,17 @@ public enum StringValidators {
   
   public static let partialForeignDocumentNumber: StringValidator = FunctionStringValidator { change in
     /// Only spaces are prohibited.
-    return regexCheck(change.newText, pattern: "^\\S*$")
+    regexCheck(change.newText, pattern: "^\\S*$")
   }
   
   public static func maximumLengthValidator(_ length: Int) -> StringValidator {
-    return FunctionStringValidator { change in
+    FunctionStringValidator { change in
       change.newText.count <= length
     }
   }
   
   public static func regexValidator(_ pattern: String) -> StringValidator {
-    return FunctionStringValidator { change in
+    FunctionStringValidator { change in
       regexCheck(change.newText, pattern: pattern)
     }
   }
@@ -41,5 +41,5 @@ public enum StringValidators {
 
 private func regexCheck(_ string: String,
                         pattern: String) -> Bool {
-  return string.range(of: pattern, options: .regularExpression) != nil
+  string.range(of: pattern, options: .regularExpression) != nil
 }

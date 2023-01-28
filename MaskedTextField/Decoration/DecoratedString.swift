@@ -11,12 +11,12 @@ public struct DecoratedString {
   }
   
   public var value: String {
-    return String(characters.map { $0.character })
+    String(characters.map(\.character))
   }
   
   public var significantValue: String {
     let significantCharacters =
-      characters.filter { $0.isSignificant }.map { $0.character }
+      characters.filter(\.isSignificant).map(\.character)
     
     return String(significantCharacters)
   }
@@ -39,7 +39,7 @@ public struct DecoratedString {
   private func significantIndex(from index: Int) -> Int {
     let charactersToTheLeft = characters.prefix(upTo: index)
     
-    let significantCharactersToTheLeft = charactersToTheLeft.filter { $0.isSignificant }
+    let significantCharactersToTheLeft = charactersToTheLeft.filter(\.isSignificant)
     
     let significantIndex = significantCharactersToTheLeft.count
     
@@ -75,7 +75,7 @@ public struct DecoratedString {
   public func indexOfFirstSignificantCharacter(toTheRightFrom targetIndex: Int) -> Int? {
     let charactersToTheRight = characters.suffix(from: targetIndex)
     
-    return charactersToTheRight.firstIndex { $0.isSignificant }
+    return charactersToTheRight.firstIndex(where: \.isSignificant)
   }
 }
 
@@ -113,15 +113,14 @@ public extension DecoratedString {
   func utf16indexFromIndex(_ index: Int) -> Int {
     let charactersToTheLeft = characters.prefix(upTo: index)
     
-    return String(charactersToTheLeft.map { $0.character }).utf16.count
+    return String(charactersToTheLeft.map(\.character)).utf16.count
   }
   
   func utf16indexFromSignificantIndex(_ significantIndex: Int) -> Int {
-    let significantCharactersToTheLeft = characters.filter { $0.isSignificant }.prefix(upTo: significantIndex)
+    let significantCharactersToTheLeft = characters.filter(\.isSignificant).prefix(upTo: significantIndex)
     
-    return String(significantCharactersToTheLeft.map { $0.character }).utf16.count
+    return String(significantCharactersToTheLeft.map(\.character)).utf16.count
   }
-  
 }
 
 
@@ -132,14 +131,14 @@ public struct DecoratedCharacter {
   public let isSignificant: Bool
     
   public static func significant(_ character: Character) -> DecoratedCharacter {
-    return DecoratedCharacter(
+    DecoratedCharacter(
       character: character,
       isSignificant: true
     )
   }
   
   public static func insignificant(_ character: Character) -> DecoratedCharacter {
-    return DecoratedCharacter(
+    DecoratedCharacter(
       character: character,
       isSignificant: false
     )

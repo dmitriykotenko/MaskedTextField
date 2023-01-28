@@ -2,11 +2,11 @@ public class TimeStringDecorator: StringDecorator {
   
   public func decorate(_ string: String) -> DecoratedString {
     var decoratedCharacters = string.map {
-      DecoratedCharacter(character: $0, isSignificant: true)
+      DecoratedCharacter.significant($0)
     }
     
     if decoratedCharacters.count > 2 {
-      let colon = DecoratedCharacter(character: ":", isSignificant: false)
+      let colon = DecoratedCharacter.insignificant(":")
       decoratedCharacters.insert(colon, at: 2)
     }
     

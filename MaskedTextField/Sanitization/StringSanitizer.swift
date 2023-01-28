@@ -11,6 +11,6 @@ struct FunctionStringSanitizer: StringSanitizer {
   let function: (String) -> String
   
   func sanitize(_ string: String) -> String {
-    return function(string)
+    function(string)
   }
 }

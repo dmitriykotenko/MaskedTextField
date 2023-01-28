@@ -42,18 +42,14 @@ class TextFieldDecorationEngine: TextFieldDelegateProxy {
   }
   
   private func convertToSignificantReplacement(_ replacement: TextReplacementOperation) -> TextReplacementOperation {
-    return TextReplacementOperation(
+    TextReplacementOperation(
       rangeToBeReplaced: significantRange(from: replacement.rangeToBeReplaced),
       replacementString: replacement.replacementString
     )
   }
   
   private func significantRange(from range: NSRange) -> NSRange {
-    if let decoratedText = decoratedText {
-      return decoratedText.significantRange(from: range)
-    } else {
-      return range
-    }
+      decoratedText?.significantRange(from: range) ?? range
   }
   
   private func performEmptyReplacement() {
@@ -140,6 +136,6 @@ class TextFieldDecorationEngine: TextFieldDelegateProxy {
   }
   
   private var decoratedText: DecoratedString? {
-    return textField?.decoratedText
+    textField?.decoratedText
   }
 }

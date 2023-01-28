@@ -51,24 +51,18 @@ public class BirthCertificateNumberStringDecorator: StringDecorator {
   }
   
   private func isRomanDigit(_ character: Character) -> Bool {
-    return String.romanDigits.contains(character)
+    String.romanDigits.contains(character)
   }
   
   private func isCyrillicLetter(_ character: Character) -> Bool {
-    return String.cyrillicLetters.contains(character)
+    String.cyrillicLetters.contains(character)
   }
   
   private func significant(_ character: Character) -> DecoratedCharacter {
-    return DecoratedCharacter(
-      character: character,
-      isSignificant: true
-    )
+    .significant(character)
   }
   
   private func insignificant(_ character: Character) -> DecoratedCharacter {
-    return DecoratedCharacter(
-      character: character,
-      isSignificant: false
-    )
+    .insignificant(character)
   }
 }

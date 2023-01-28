@@ -25,11 +25,7 @@ class UserIntentRecognizer {
   }
   
   private func convertRangeFrom(utf16range: NSRange) -> NSRange {
-    if let decoratedText = decoratedText {
-      return decoratedText.rangeFromUtf16Range(utf16range)
-    } else {
-      return utf16range
-    }
+      decoratedText?.rangeFromUtf16Range(utf16range) ?? utf16range
   }
   
   private func expandRangeIfNecessary(_ replacement: TextReplacementOperation) -> TextReplacementOperation {
@@ -75,6 +71,6 @@ class UserIntentRecognizer {
   }
   
   private var decoratedText: DecoratedString? {
-    return textField?.decoratedText
+    textField?.decoratedText
   }
 }

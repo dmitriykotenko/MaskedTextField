@@ -6,7 +6,7 @@ class ViewController: UIViewController {
   let maskedTextField: MaskedTextField = MaskedTextField(
     decoration: .template("__:__"),
     sanitization: .accept(.decimalDigits),
-    validation: .function({ $0.newText.count <= 4 })
+    validation: .function { $0.newText.count <= 4 }
   )
   
   let anotherMaskedTextField = MaskedTextField(decoration: .template("__∞∞__"))
@@ -59,8 +59,10 @@ class ViewController: UIViewController {
     maskedTextField.addObserver(self, forKeyPath: "text", options: [.old, .new], context: nil)
   }
   
-  override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
-    
+  override func observeValue(forKeyPath keyPath: String?,
+                             of object: Any?,
+                             change: [NSKeyValueChangeKey : Any]?,
+                             context: UnsafeMutableRawPointer?) {
     guard let object = object as? UITextField else { return }
     if object == maskedTextField && keyPath == "text" {
       let newText = change![.newKey]

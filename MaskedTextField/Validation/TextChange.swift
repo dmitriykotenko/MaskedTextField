@@ -1,4 +1,4 @@
-import UIKit
+import Foundation
 
 
 /// A request to change text field's text.

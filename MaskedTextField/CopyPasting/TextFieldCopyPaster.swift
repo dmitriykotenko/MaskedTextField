@@ -68,7 +68,7 @@ class TextFieldCopyPaster {
   }
   
   private func significantRange(from range: NSRange) -> NSRange {
-    return textField?.decoratedText?.significantRange(from: range) ?? range
+    textField?.decoratedText?.significantRange(from: range) ?? range
   }
 }
 

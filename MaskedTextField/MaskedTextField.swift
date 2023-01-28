@@ -14,13 +14,8 @@ import UIKit
 public class MaskedTextField: UITextField {
   
   public override var delegate: UITextFieldDelegate? {
-    set {
-      outerDelegate.parent = newValue
-    }
-    
-    get {
-      return outerDelegate.parent
-    }
+    set { outerDelegate.parent = newValue }
+    get { outerDelegate.parent }
   }
   
   public override var text: String? {
@@ -38,7 +33,7 @@ public class MaskedTextField: UITextField {
     }
     
     get {
-      return decoratedText?.significantValue
+      decoratedText?.significantValue
     }
   }
   

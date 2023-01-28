@@ -24,6 +24,6 @@ struct FunctionStringValidator: StringValidator {
   }
   
   func isValid(_ change: TextChange) -> Bool {
-    return function(change)
+    function(change)
   }
 }

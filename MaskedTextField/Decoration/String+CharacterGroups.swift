@@ -3,17 +3,17 @@ extension String {
   
   /// Roman digits (both uppercased and lowercased).
   static var romanDigits: String {
-    let lowercasedDigits = "ivxlcdm"
-    let uppercasedDigits = lowercasedDigits.uppercased()
+    let lowercaseDigits = "ivxlcdm"
+    let uppercaseDigits = lowercaseDigits.uppercased()
     
-    return lowercasedDigits + uppercasedDigits
+    return lowercaseDigits + uppercaseDigits
   }
   
   /// Russian letters (both uppercased and lowercased).
   static var cyrillicLetters: String {
-    let lowercasedLetters = "абвгдеёжзийклмнопрстуфхцчшщъыьэюя"
-    let uppercasedLetters = lowercasedLetters.uppercased()
+    let lowercaseLetters = "абвгдеёжзийклмнопрстуфхцчшщъыьэюя"
+    let uppercaseLetters = lowercaseLetters.uppercased()
     
-    return lowercasedLetters + uppercasedLetters
+    return lowercaseLetters + uppercaseLetters
   }
 }

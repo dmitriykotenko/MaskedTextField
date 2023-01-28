@@ -1,4 +1,4 @@
-/// Removes unappropriate characters from the string.
+/// Removes inappropriate characters from the string.
 public protocol StringSanitizer {
   
   /// Returns given string without inappropriate characters.

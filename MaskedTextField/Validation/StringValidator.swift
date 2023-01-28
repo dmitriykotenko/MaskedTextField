@@ -1,4 +1,4 @@
-/// Checks if a string is goog or bad.
+/// Checks if a string is good or bad.
 public protocol StringValidator {
   
   /// Returns true if given string is good.

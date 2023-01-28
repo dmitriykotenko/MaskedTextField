@@ -8,9 +8,10 @@ class TextFieldSurgeon: TextFieldDelegateProxy {
   /// To fix this, we need to explicitly clear the text field once the user presses the button.
   override func textFieldShouldClear(_ textField: UITextField) -> Bool {
     let shouldClear = parent?.textFieldShouldClear?(textField) ?? true
+    let maskedTextField = textField as? MaskedTextField
     
     if shouldClear {
-      textField.text = ""
+      maskedTextField?.userDidChangeText(to: "")
     }
     
     return false

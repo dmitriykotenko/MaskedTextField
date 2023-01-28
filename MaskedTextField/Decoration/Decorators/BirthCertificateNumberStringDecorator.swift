@@ -11,7 +11,7 @@ class BirthCertificateNumberStringDecorator: StringDecorator {
     let sections = splitIntoSections(string)
     
     /// Roman digits go first.
-    var characters = sections.romanDigits.map ( significant )
+    var characters = sections.romanDigits.map(significant)
     
     /// If there is at least one roman digit, we should append a space.
     if !sections.romanDigits.isEmpty && (!sections.letters.isEmpty || !sections.remainder.isEmpty) {
@@ -19,7 +19,7 @@ class BirthCertificateNumberStringDecorator: StringDecorator {
     }
     
     // Cyrillic letters go second.
-    characters += sections.letters.map ( significant )
+    characters += sections.letters.map(significant)
     
     // If there are exactly two cyrillic letters, we should append a space.
     if sections.letters.count >= 2 {
@@ -27,7 +27,7 @@ class BirthCertificateNumberStringDecorator: StringDecorator {
     }
     
     // Remainder goes last.
-    characters += sections.remainder.map ( significant )
+    characters += sections.remainder.map(significant)
     
     return DecoratedString(characters: characters)
   }

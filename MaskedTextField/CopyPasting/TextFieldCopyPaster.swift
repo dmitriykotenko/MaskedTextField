@@ -5,8 +5,8 @@ import UIKit
 class TextFieldCopyPaster {
   
   private weak var textField: MaskedTextField?
-  private let innerDelegate: UITextFieldDelegate
-  private let outerDelegate: UITextFieldDelegate
+  private weak var innerDelegate: UITextFieldDelegate?
+  private weak var outerDelegate: UITextFieldDelegate?
   
   private let pasteboard = UIPasteboard.general
   
@@ -20,6 +20,8 @@ class TextFieldCopyPaster {
   
   func cut() {
     guard
+      let outerDelegate = outerDelegate,
+      let innerDelegate = innerDelegate,
       let textField = textField,
       let selectedText = textField.selectedText,
       let selectedUtf16range = textField.selectedUtf16range,
@@ -47,6 +49,7 @@ class TextFieldCopyPaster {
   
   func paste() {
     guard
+      let innerDelegate = innerDelegate,
       let textField = textField,
       let selectedUtf16range = textField.selectedUtf16range
       else { return }
@@ -54,7 +57,7 @@ class TextFieldCopyPaster {
     guard
       pasteboard.hasStrings,
       // Joining with spaces is default UITextField's behavior when pasting multiple strings at once.
-      let pastedText = pasteboard.strings.map ({ $0.joined(separator: " ") })
+      let pastedText = pasteboard.strings.map({ $0.joined(separator: " ") })
       else { return }
     
     _ = innerDelegate.textField?(

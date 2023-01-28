@@ -68,7 +68,7 @@ class TextFieldDecorationEngine: TextFieldDelegateProxy {
       let textField = textField,
       let method = parent?.textField(_:shouldChangeCharactersIn:replacementString:)
       else { return true }
-
+    
     // UITextFieldDelegate uses UTF-16-based offsets for range.
     // Hence we must convert corrected range back to UTF-16-based format.
     return method(
@@ -85,10 +85,14 @@ class TextFieldDecorationEngine: TextFieldDelegateProxy {
     
     let currentText = textField.text ?? ""
     
-    textField.text = NSString(string: currentText).replacingCharacters(
-      in: significantUtf16range(from: replacement.rangeToBeReplaced),
-      with: replacement.replacementString
-      ).description
+    let newText = NSString(string: currentText)
+      .replacingCharacters(
+        in: significantUtf16range(from: replacement.rangeToBeReplaced),
+        with: replacement.replacementString
+      )
+      .description
+    
+    textField.userDidChangeText(to: newText)
     
     adjustCaretPosition(after: replacement)
   }
@@ -127,11 +131,11 @@ class TextFieldDecorationEngine: TextFieldDelegateProxy {
   }
   
   private func moveCaret(to desiredCaretPosition: UITextPosition) {
-      guard let textField = textField else { return }
-      
-      textField.selectedTextRange = textField.textRange(
-        from: desiredCaretPosition,
-        to: desiredCaretPosition
+    guard let textField = textField else { return }
+    
+    textField.selectedTextRange = textField.textRange(
+      from: desiredCaretPosition,
+      to: desiredCaretPosition
     )
   }
   

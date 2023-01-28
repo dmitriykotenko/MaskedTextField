@@ -1,6 +1,6 @@
-class EmptyStringDecorator: StringDecorator {
+public class EmptyStringDecorator: StringDecorator {
   
-  func decorate(_ string: String) -> DecoratedString {
+  public func decorate(_ string: String) -> DecoratedString {
     let decoratedCharacters = string.map {
       DecoratedCharacter(character: $0, isSignificant: true)
     }

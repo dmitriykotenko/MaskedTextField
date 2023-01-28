@@ -1,6 +1,6 @@
-class TimeStringDecorator: StringDecorator {
+public class TimeStringDecorator: StringDecorator {
   
-  func decorate(_ string: String) -> DecoratedString {
+  public func decorate(_ string: String) -> DecoratedString {
     var decoratedCharacters = string.map {
       DecoratedCharacter(character: $0, isSignificant: true)
     }

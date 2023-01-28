@@ -47,6 +47,7 @@
 		5BC0A46320E27DBE006A6529 /* TextFieldSurgeon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BC0A45220E27DBE006A6529 /* TextFieldSurgeon.swift */; };
 		5BC0A46420E27DBE006A6529 /* TextFieldDelegateProxy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BC0A45320E27DBE006A6529 /* TextFieldDelegateProxy.swift */; };
 		5BC0A46520E27DBE006A6529 /* MaskedTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BC0A45420E27DBE006A6529 /* MaskedTextField.swift */; };
+		5BE8916E23A123CC007ACC4B /* TextChange.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BE8916D23A123CC007ACC4B /* TextChange.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -113,6 +114,7 @@
 		5BC0A45220E27DBE006A6529 /* TextFieldSurgeon.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextFieldSurgeon.swift; sourceTree = "<group>"; };
 		5BC0A45320E27DBE006A6529 /* TextFieldDelegateProxy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextFieldDelegateProxy.swift; sourceTree = "<group>"; };
 		5BC0A45420E27DBE006A6529 /* MaskedTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MaskedTextField.swift; sourceTree = "<group>"; };
+		5BE8916D23A123CC007ACC4B /* TextChange.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextChange.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -145,6 +147,7 @@
 			children = (
 				5B102C3D2156DC6400D2A7BB /* StringValidator.swift */,
 				5B102C3A2156DBDD00D2A7BB /* StringValidators.swift */,
+				5BE8916D23A123CC007ACC4B /* TextChange.swift */,
 				5B102C502158160400D2A7BB /* TextFieldValidation.swift */,
 				5B102C392156DBDD00D2A7BB /* TextFieldValidationEngine.swift */,
 			);
@@ -424,6 +427,7 @@
 				5BA6A1F0239E5C9500F519C6 /* UITextInput+.swift in Sources */,
 				5B2A67AA239D810000EC4278 /* TextFieldCopyPaster.swift in Sources */,
 				5BC0A41320E27D43006A6529 /* AppDelegate.swift in Sources */,
+				5BE8916E23A123CC007ACC4B /* TextChange.swift in Sources */,
 				5BC0A45B20E27DBE006A6529 /* PhoneNumberStringDecorator.swift in Sources */,
 				5BC0A45D20E27DBE006A6529 /* EmptyStringDecorator.swift in Sources */,
 				5B0F9CC020F7E018005772B7 /* String+CharacterGroups.swift in Sources */,

@@ -1,44 +1,40 @@
 /// Validators for different kinds of strings.
 public enum StringValidators {
   
-  static let empty: StringValidator = FunctionStringValidator { _ in true }
+  public static let empty: StringValidator = FunctionStringValidator { _ in true }
   
-  static let partialDate: StringValidator = FunctionStringValidator { string in
-    regexCheck(string, pattern: "^[0-9]{0,8}$")
-  }
+  public static let partialDate: StringValidator = regexValidator("^[0-9]{0,8}$")
   
-  static let partialRussianPassportNumber: StringValidator = FunctionStringValidator { string in
-    regexCheck(string, pattern: "^[0-9]{0,10}$")
-  }
-  
-  static let partialInternationalPassportNumber: StringValidator = FunctionStringValidator { string in
-    regexCheck(string, pattern: "^[0-9]{0,9}$")
-  }
-  
-  static let partialBirthCertificateNumber: StringValidator = FunctionStringValidator { string in
-    let uppercasedString = string.uppercased()
-    
+  public static let partialRussianPassportNumber: StringValidator = regexValidator("^[0-9]{0,10}$")
+
+  public static let partialInternationalPassportNumber: StringValidator = regexValidator("^[0-9]{0,9}$")
+
+  public static let partialBirthCertificateNumber: StringValidator = FunctionStringValidator { change in
     let romanDigitsSection = "[" + String.romanDigits + "]{0,10}"
     let cyrillicLettersSection = "[" + String.cyrillicLetters + "]{0,2}"
     let digitsSection = "[0-9]{0,6}"
     
     return regexCheck(
-      string,
+      change.newText,
       pattern: "^" + romanDigitsSection + cyrillicLettersSection + digitsSection + "$"
     )
   }
   
-  static let partialForeignDocumentNumber: StringValidator = FunctionStringValidator { string in
+  public static let partialForeignDocumentNumber: StringValidator = FunctionStringValidator { change in
     /// Only spaces are prohibited.
-    return regexCheck(string, pattern: "^\\S*$")
+    return regexCheck(change.newText, pattern: "^\\S*$")
   }
   
-  static func maximumLengthValidator(_ length: Int) -> StringValidator {
-    return FunctionStringValidator { string in string.count <= length }
+  public static func maximumLengthValidator(_ length: Int) -> StringValidator {
+    return FunctionStringValidator { change in
+      change.newText.count <= length
+    }
   }
   
-  static func regexValidator(_ pattern: String) -> StringValidator {
-    return FunctionStringValidator { string in regexCheck(string, pattern: pattern) }
+  public static func regexValidator(_ pattern: String) -> StringValidator {
+    return FunctionStringValidator { change in
+      regexCheck(change.newText, pattern: pattern)
+    }
   }
 }
 

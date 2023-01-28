@@ -19,7 +19,7 @@ public enum TextFieldValidation {
   case regex(String)
   
   /// Validation for MaskedTextField which uses given function as validator.
-  case function((String) -> Bool)
+  case function((TextChange) -> Bool)
 
   /// Custom validation for MaskedTextField.
   case custom(StringValidator)

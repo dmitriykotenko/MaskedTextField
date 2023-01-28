@@ -1,5 +1,5 @@
 /// Decorates a number of russian birth certificate entered by the user – to make the number more human-readable.
-class BirthCertificateNumberStringDecorator: StringDecorator {
+public class BirthCertificateNumberStringDecorator: StringDecorator {
   
   private struct Sections {
     var romanDigits: String
@@ -7,7 +7,7 @@ class BirthCertificateNumberStringDecorator: StringDecorator {
     var remainder: String
   }
   
-  func decorate(_ string: String) -> DecoratedString {
+  public func decorate(_ string: String) -> DecoratedString {
     let sections = splitIntoSections(string)
     
     /// Roman digits go first.

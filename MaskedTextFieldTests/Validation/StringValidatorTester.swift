@@ -9,7 +9,13 @@ class StringValidatorTester: XCTestCase {
   var tag: String = "anything"
   
   func assertSuccess(string: String) {
-    if validator.isValid(string) == false {
+    let change = TextChange(
+      oldText: "",
+      replacementRange: .init(location: 0, length: 0),
+      replacementString: string
+    )
+
+    if validator.isValid(change) == false {
       XCTFail(
         "String \"\(string)\" must be considered valid when entering \(tag)."
       )
@@ -17,7 +23,13 @@ class StringValidatorTester: XCTestCase {
   }
   
   func assertError(string: String) {
-    if validator.isValid(string) == true {
+    let change = TextChange(
+      oldText: "",
+      replacementRange: .init(location: 0, length: 0),
+      replacementString: string
+    )
+
+    if validator.isValid(change) == true {
       XCTFail(
         "String \"\(string)\" must be considered invalid when entering \(tag)."
       )

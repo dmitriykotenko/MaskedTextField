@@ -194,6 +194,7 @@
 				5BC0A42620E27D45006A6529 /* MaskedTextFieldTests */,
 				5BC0A43120E27D45006A6529 /* MaskedTextFieldUITests */,
 				5BCE220021596F6E00F0CA5B /* SampleApp */,
+				5BE3294B2986F36100AD1A6C /* Supporting Files */,
 				5BC0A41020E27D43006A6529 /* Products */,
 			);
 			indentWidth = 2;
@@ -221,7 +222,6 @@
 				5BC0A45320E27DBE006A6529 /* TextFieldDelegateProxy.swift */,
 				5BC0A45220E27DBE006A6529 /* TextFieldSurgeon.swift */,
 				5BA6A1EF239E5C9500F519C6 /* UITextInput+.swift */,
-				5BC0A41E20E27D44006A6529 /* Info.plist */,
 			);
 			path = MaskedTextField;
 			sourceTree = "<group>";
@@ -283,6 +283,14 @@
 				5BC0A41B20E27D44006A6529 /* LaunchScreen.storyboard */,
 			);
 			path = SampleApp;
+			sourceTree = "<group>";
+		};
+		5BE3294B2986F36100AD1A6C /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				5BC0A41E20E27D44006A6529 /* Info.plist */,
+			);
+			path = "Supporting Files";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -629,7 +637,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = ZAQ2QV397A;
-				INFOPLIST_FILE = MaskedTextField/Info.plist;
+				INFOPLIST_FILE = "Supporting Files/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -647,7 +655,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = ZAQ2QV397A;
-				INFOPLIST_FILE = MaskedTextField/Info.plist;
+				INFOPLIST_FILE = "Supporting Files/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

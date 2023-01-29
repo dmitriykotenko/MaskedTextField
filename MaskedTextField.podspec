@@ -32,9 +32,9 @@ Text field which automatically places auxiliary characters during the editing.
 
   s.source_files = 'MaskedTextField/**/*'
   
-  # s.resource_bundles = {
-  #   'MaskedTextField' => ['MaskedTextField/Assets/*.png']
-  # }
+  s.resource_bundles = {
+    'MaskedTextField' => ['MaskedTextField/SampleApp/**']
+  }
 
   # s.public_header_files = 'Pod/Classes/**/*.h'
   # s.frameworks = 'UIKit', 'MapKit'

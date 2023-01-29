@@ -193,6 +193,7 @@
 				5BC0A41120E27D43006A6529 /* MaskedTextField */,
 				5BC0A42620E27D45006A6529 /* MaskedTextFieldTests */,
 				5BC0A43120E27D45006A6529 /* MaskedTextFieldUITests */,
+				5BCE220021596F6E00F0CA5B /* SampleApp */,
 				5BC0A41020E27D43006A6529 /* Products */,
 			);
 			indentWidth = 2;
@@ -221,7 +222,6 @@
 				5BC0A45220E27DBE006A6529 /* TextFieldSurgeon.swift */,
 				5BA6A1EF239E5C9500F519C6 /* UITextInput+.swift */,
 				5BC0A41E20E27D44006A6529 /* Info.plist */,
-				5BCE220021596F6E00F0CA5B /* SampleApp */,
 			);
 			path = MaskedTextField;
 			sourceTree = "<group>";

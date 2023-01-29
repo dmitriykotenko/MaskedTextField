@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'MaskedTextField'
-  s.version          = '0.3.1'
+  s.version          = '0.3.2'
   s.summary          = 'Text field for formatted inputs.'
 
 # This description is used to generate tags and improve search results.
@@ -32,9 +32,9 @@ Text field which automatically places auxiliary characters during the editing.
 
   s.source_files = 'MaskedTextField/**/*'
   
-  s.resource_bundles = {
-    'MaskedTextField' => ['MaskedTextField/SampleApp/**']
-  }
+  # s.resource_bundles = {
+  #   'MaskedTextField' => ['SampleApp/**']
+  # }
 
   # s.public_header_files = 'Pod/Classes/**/*.h'
   # s.frameworks = 'UIKit', 'MapKit'

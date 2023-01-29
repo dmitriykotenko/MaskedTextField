@@ -11,7 +11,7 @@ import UIKit
 /// and the user sees a phone number +7 900 816-04-28 on the screen,
 /// .text property will contain the value "79008160428".
 /// Spaces, dashes and plus sign are not visible outside.
-public class MaskedTextField: UITextField {
+open class MaskedTextField: UITextField {
   
   public override var delegate: UITextFieldDelegate? {
     set { outerDelegate.parent = newValue }
@@ -42,7 +42,7 @@ public class MaskedTextField: UITextField {
   }
   
   /// Text field's current text with every character marked as significant or not significant.
-  var decoratedText: DecoratedString?
+  public internal(set) var decoratedText: DecoratedString?
   
   private var decorator: StringDecorator = EmptyStringDecorator()
   private var decorationEngine: TextFieldDecorationEngine?

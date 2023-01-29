@@ -14,26 +14,26 @@ public enum StringValidators {
     let cyrillicLettersSection = "[" + String.cyrillicLetters + "]{0,2}"
     let digitsSection = "[0-9]{0,6}"
     
-    return regexCheck(
+    return change.replacementString.isEmpty || regexCheck(
       change.newText,
       pattern: "^" + romanDigitsSection + cyrillicLettersSection + digitsSection + "$"
     )
   }
   
   public static let partialForeignDocumentNumber: StringValidator = FunctionStringValidator { change in
-    /// Only spaces are prohibited.
-    regexCheck(change.newText, pattern: "^\\S*$")
+    change.replacementString.isEmpty
+    || regexCheck(change.newText, pattern: "^\\S*$") // only spaces are prohibited
   }
   
   public static func maximumLengthValidator(_ length: Int) -> StringValidator {
     FunctionStringValidator { change in
-      change.newText.count <= length
+      change.replacementString.isEmpty || change.newText.count <= length
     }
   }
   
   public static func regexValidator(_ pattern: String) -> StringValidator {
     FunctionStringValidator { change in
-      regexCheck(change.newText, pattern: pattern)
+      change.replacementString.isEmpty || regexCheck(change.newText, pattern: pattern)
     }
   }
 }

@@ -19,10 +19,6 @@ struct FunctionStringValidator: StringValidator {
     self.function = function
   }
   
-  static func newTextFilter(_ newTextFilter: @escaping (String) -> Bool) -> Self {
-    self.init(function: { newTextFilter($0.newText) })
-  }
-  
   func isValid(_ change: TextChange) -> Bool {
     function(change)
   }

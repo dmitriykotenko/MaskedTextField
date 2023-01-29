@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'MaskedTextField'
-  s.version          = '0.3.0'
+  s.version          = '0.3.1'
   s.summary          = 'Text field for formatted inputs.'
 
 # This description is used to generate tags and improve search results.

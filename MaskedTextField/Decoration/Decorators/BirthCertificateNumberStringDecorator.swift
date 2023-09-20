@@ -58,11 +58,11 @@ public class BirthCertificateNumberStringDecorator: StringDecorator {
     String.cyrillicLetters.contains(character)
   }
   
-  private func significant(_ character: Character) -> DecoratedCharacter {
+  private func significant(_ character: Character) -> FlaggedCharacter {
     .significant(character)
   }
   
-  private func insignificant(_ character: Character) -> DecoratedCharacter {
+  private func insignificant(_ character: Character) -> FlaggedCharacter {
     .insignificant(character)
   }
 }

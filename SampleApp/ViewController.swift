@@ -10,7 +10,13 @@ class ViewController: UIViewController {
   )
   
   let anotherMaskedTextField = MaskedTextField(decoration: .template("__∞∞__"))
-  
+
+  let maskedTextFieldWithSuffix: MaskedTextField = MaskedTextField(
+    decoration: .template("___🤷🏽‍♀️___🇪🇷___", suffix: " руб-руб-руб."),
+    sanitization: .accept(.decimalDigits),
+    validation: .function { $0.newText.count <= 9 }
+  )
+
   let uiTextField = UITextField()
 
   var observation: NSKeyValueObservation?
@@ -20,7 +26,9 @@ class ViewController: UIViewController {
     
     addMaskedTextField()
     addAnotherMaskedTextField()
+    addMaskedTextFieldWithSuffix()
     addUiTextField()
+
     addKeyValueObserverForMaskedTextField()
   }
   
@@ -28,7 +36,7 @@ class ViewController: UIViewController {
     maskedTextField.translatesAutoresizingMaskIntoConstraints = false
     view.addSubview(maskedTextField)
     
-    maskedTextField.topAnchor.constraint(equalTo: view.topAnchor, constant: 40).isActive = true
+    maskedTextField.topAnchor.constraint(equalTo: view.topAnchor, constant: 60).isActive = true
     maskedTextField.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
     maskedTextField.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20).isActive = true
     maskedTextField.backgroundColor = UIColor.orange.withAlphaComponent(0.1)
@@ -38,12 +46,22 @@ class ViewController: UIViewController {
     anotherMaskedTextField.translatesAutoresizingMaskIntoConstraints = false
     view.addSubview(anotherMaskedTextField)
     
-    anotherMaskedTextField.topAnchor.constraint(equalTo: view.topAnchor, constant: 140).isActive = true
+    anotherMaskedTextField.topAnchor.constraint(equalTo: view.topAnchor, constant: 120).isActive = true
     anotherMaskedTextField.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
     anotherMaskedTextField.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20).isActive = true
     anotherMaskedTextField.backgroundColor = UIColor.blue.withAlphaComponent(0.1)
   }
-  
+
+  private func addMaskedTextFieldWithSuffix() {
+    maskedTextFieldWithSuffix.translatesAutoresizingMaskIntoConstraints = false
+    view.addSubview(maskedTextFieldWithSuffix)
+
+    maskedTextFieldWithSuffix.topAnchor.constraint(equalTo: view.topAnchor, constant: 180).isActive = true
+    maskedTextFieldWithSuffix.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+    maskedTextFieldWithSuffix.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20).isActive = true
+    maskedTextFieldWithSuffix.backgroundColor = UIColor.green.withAlphaComponent(0.1)
+  }
+
   private func addUiTextField() {
     uiTextField.textContentType = .telephoneNumber
     uiTextField.translatesAutoresizingMaskIntoConstraints = false

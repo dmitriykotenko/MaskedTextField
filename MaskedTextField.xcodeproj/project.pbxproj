@@ -48,6 +48,8 @@
 		5BC0A46420E27DBE006A6529 /* TextFieldDelegateProxy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BC0A45320E27DBE006A6529 /* TextFieldDelegateProxy.swift */; };
 		5BC0A46520E27DBE006A6529 /* MaskedTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BC0A45420E27DBE006A6529 /* MaskedTextField.swift */; };
 		5BE8916E23A123CC007ACC4B /* TextChange.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BE8916D23A123CC007ACC4B /* TextChange.swift */; };
+		5BEF87C72ABB2CB80076664F /* FlaggedCharacter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BEF87C62ABB2CB80076664F /* FlaggedCharacter.swift */; };
+		5BEF87C92ABB64610076664F /* UITextField+caretPositioning.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BEF87C82ABB64610076664F /* UITextField+caretPositioning.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -115,6 +117,8 @@
 		5BC0A45320E27DBE006A6529 /* TextFieldDelegateProxy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextFieldDelegateProxy.swift; sourceTree = "<group>"; };
 		5BC0A45420E27DBE006A6529 /* MaskedTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MaskedTextField.swift; sourceTree = "<group>"; };
 		5BE8916D23A123CC007ACC4B /* TextChange.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextChange.swift; sourceTree = "<group>"; };
+		5BEF87C62ABB2CB80076664F /* FlaggedCharacter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FlaggedCharacter.swift; sourceTree = "<group>"; };
+		5BEF87C82ABB64610076664F /* UITextField+caretPositioning.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UITextField+caretPositioning.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -250,6 +254,7 @@
 			children = (
 				5BC0A44720E27DBD006A6529 /* Decorators */,
 				5BC0A44F20E27DBD006A6529 /* DecoratedString.swift */,
+				5BEF87C62ABB2CB80076664F /* FlaggedCharacter.swift */,
 				5B0F9CBF20F7E018005772B7 /* String+CharacterGroups.swift */,
 				5BC0A44520E27DBD006A6529 /* String+NSRange.swift */,
 				5BC0A44E20E27DBD006A6529 /* StringDecorator.swift */,
@@ -257,6 +262,7 @@
 				5BC0A44D20E27DBD006A6529 /* TextFieldDecorationEngine.swift */,
 				5BC0A44620E27DBD006A6529 /* TextReplacementOperation.swift */,
 				5BA09D51212DB764006371A9 /* UserIntentRecognizer.swift */,
+				5BEF87C82ABB64610076664F /* UITextField+caretPositioning.swift */,
 			);
 			path = Decoration;
 			sourceTree = "<group>";
@@ -427,6 +433,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5BEF87C92ABB64610076664F /* UITextField+caretPositioning.swift in Sources */,
 				5BA09D52212DB764006371A9 /* UserIntentRecognizer.swift in Sources */,
 				5BC0A46420E27DBE006A6529 /* TextFieldDelegateProxy.swift in Sources */,
 				5B102C512158160400D2A7BB /* TextFieldValidation.swift in Sources */,
@@ -435,6 +442,7 @@
 				5BA6A1F0239E5C9500F519C6 /* UITextInput+.swift in Sources */,
 				5B2A67AA239D810000EC4278 /* TextFieldCopyPaster.swift in Sources */,
 				5BC0A41320E27D43006A6529 /* AppDelegate.swift in Sources */,
+				5BEF87C72ABB2CB80076664F /* FlaggedCharacter.swift in Sources */,
 				5BE8916E23A123CC007ACC4B /* TextChange.swift in Sources */,
 				5BC0A45B20E27DBE006A6529 /* PhoneNumberStringDecorator.swift in Sources */,
 				5BC0A45D20E27DBE006A6529 /* EmptyStringDecorator.swift in Sources */,

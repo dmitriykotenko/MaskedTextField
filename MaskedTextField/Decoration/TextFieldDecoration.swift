@@ -10,8 +10,8 @@ public enum TextFieldDecoration {
   /// Template for decoration of MaskedTextField.
   /// Underscores represent text entered by the user.
   /// Every character except underscore considered auxiliary.
-  case template(String)
-  
+  case template(String, suffix: String? = nil)
+
   /// Custom decorator for MaskedTextField.
   case custom(StringDecorator)
   
@@ -19,8 +19,8 @@ public enum TextFieldDecoration {
     switch self {
     case .none:
       return EmptyStringDecorator()
-    case .template(let template):
-      return TemplateStringDecorator(template: template)
+    case .template(let template, let finalSuffix):
+      return TemplateStringDecorator(template: template, globalSuffix: finalSuffix)
     case .custom(let customDecorator):
       return customDecorator
     }

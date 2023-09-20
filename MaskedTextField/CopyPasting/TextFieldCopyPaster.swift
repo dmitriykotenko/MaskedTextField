@@ -81,7 +81,7 @@ private extension MaskedTextField {
       let selectedUtf16range = selectedUtf16range
       else { return nil }
     
-    let selectedSubstring = NSString(string: decoratedText.value)
+    let selectedSubstring = NSString(string: decoratedText.content)
       .substring(with: selectedUtf16range)
     
     return selectedSubstring

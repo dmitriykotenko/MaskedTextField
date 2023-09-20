@@ -22,7 +22,7 @@ open class MaskedTextField: UITextField {
     set {
       decoratedText = newValue.map(decorator.decorate)
       
-      super.text = decoratedText?.value
+      super.text = decoratedText?.content
 
       sendActions(for: .valueChanged)
 
@@ -33,7 +33,7 @@ open class MaskedTextField: UITextField {
     }
     
     get {
-      decoratedText?.significantValue
+      decoratedText?.significantContent
     }
   }
   

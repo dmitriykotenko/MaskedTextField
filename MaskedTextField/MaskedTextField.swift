@@ -6,10 +6,10 @@ import UIKit
 /// — automatically places auxiliary characters during the editing
 /// — does not allow the user to enter some invalid texts
 ///
-/// .text property contains only significant characters – i. e. the characters entered by the user.
+/// ``.text`` property contains only significant characters – i. e. the characters entered by the user.
 /// For instance, when the decoration template is "+_ ___ ___-__-__"
 /// and the user sees a phone number +7 900 816-04-28 on the screen,
-/// .text property will contain the value "79008160428".
+/// ``.text`` property will contain the value "79008160428".
 /// Spaces, dashes and plus sign are not visible outside.
 open class MaskedTextField: UITextField {
   
@@ -21,8 +21,8 @@ open class MaskedTextField: UITextField {
   public override var text: String? {
     set {
       decoratedText = newValue.map(decorator.decorate)
-      
-      super.text = decoratedText?.content
+
+      super.attributedText = decoratedText.map { attributor.attributedString($0) }
 
       sendActions(for: .valueChanged)
 
@@ -49,14 +49,15 @@ open class MaskedTextField: UITextField {
   private var decorationEngine: TextFieldDecorationEngine?
   private var sanitizationEngine: TextFieldSanitizationEngine?
   private var validationEngine: TextFieldValidationEngine?
-  
+
   private var delegatesChain: [TextFieldDelegateProxy] = []
   
   // swiftlint:disable:next weak_delegate
   private var outerDelegate: TextFieldDelegateProxy = TextFieldSurgeon()
   
   private var copyPaster: TextFieldCopyPaster?
-  
+  private var attributor: DecoratedStringAttributor = EmptyStringAttributor()
+
   override init(frame: CGRect) {
     super.init(frame: frame)
     
@@ -69,35 +70,40 @@ open class MaskedTextField: UITextField {
     privateInit()
   }
   
-  /// Creates MaskedTextField with predefined decoration, validation and sanitization.
+  /// Creates ``MaskedTextField`` with predefined decoration, validation, sanitization and attribution.
   ///
   /// - parameters:
   ///     - decoration: Rules to place auxiliary characters during the editing.
   ///     E. g. for phone numbers the rules can be described as a template "+_ ___ ___-__-__".
   ///     (Underscores represent text entered by the user.
   ///     All other characters are auxiliary and placed automatically during the editing.)
-  ///     Default value is .none which means no decoration.
+  ///     Default value is ``.none`` which means no decoration.
   ///     - sanitization: Rules to remove single undesirable characters from user input.
   ///     E. g. when the user inserts phone number via the clipboard,
   ///     the number is usually formatted and looks like this: "+7 (900) 555-22-11".
   ///     But we usually want to remove everything except digits and paste "79005552211".
-  ///     Default value in .none which means that every character is acceptable.
+  ///     Default value in ``.none`` which means that every character is acceptable.
   ///     - validation: A filter that prohibits the user to change field's text
   ///     if new text is inappropriate. E. g. when entering time of day,
   ///     the text is appropriate if it contains only digits and its length is less than or equal to 4.
-  ///     Default value is .none and means everything is valid.
+  ///     Default value is ``.none`` and means everything is valid.
+  ///     - attribution: Styling for text field's text. E. g. when entering price,
+  ///     it may be appropriate to mute currency sign's color or to reduce currency sign's font size.
+  ///     Default value is ``.none`` and means no styling.
   ///
   /// Validation and sanitization work only for user-initiated changes.
-  /// They do not work when .text property is changed programmatically.
+  /// They do not work when ``.text`` property is changed programmatically.
   /// Decoration works for both programmatic and user-initiated changes.
   public convenience init(decoration: TextFieldDecoration = .none,
                           sanitization: TextFieldSanitization = .none,
-                          validation: TextFieldValidation = .none) {
+                          validation: TextFieldValidation = .none,
+                          attribution: TextFieldAttribution = .none) {
     self.init(frame: .zero)
     
     setDecoration(decoration)
     setSanitization(sanitization)
     setValidation(validation)
+    setAttribution(attribution)
     
     text = ""
   }
@@ -180,17 +186,26 @@ open class MaskedTextField: UITextField {
   public func setValidation(_ validation: TextFieldValidation) {
     validationEngine?.validator = validation.parse()
   }
-  
+
+  /// Sets a transformer which adds attributes to text field's text.
+  public func setAttribution(_ attribution: TextFieldAttribution) {
+    attributor = attribution.parse()
+  }
+
   private func applyDecoration() {
     let currentText = text
     text = currentText
   }
   
-  public override func cut(_ sender: Any?) {
-    copyPaster?.cut()
-  }
-  
-  public override func paste(_ sender: Any?) {
-    copyPaster?.paste()
-  }
+  public override func cut(_ sender: Any?) { copyPaster?.cut() }
+  public override func paste(_ sender: Any?) { copyPaster?.paste() }
+
+  public override var font: UIFont? { didSet { textStyleUpdated() } }
+  public override var textColor: UIColor? { didSet { textStyleUpdated() } }
+  public override var minimumFontSize: CGFloat { didSet { textStyleUpdated() } }
+  public override var adjustsFontSizeToFitWidth: Bool { didSet { textStyleUpdated() } }
+  public override var adjustsFontForContentSizeCategory: Bool { didSet { textStyleUpdated() } }
+  public override var defaultTextAttributes: [NSAttributedString.Key : Any] { didSet { textStyleUpdated() } }
+
+  private func textStyleUpdated() { self.text = text }
 }

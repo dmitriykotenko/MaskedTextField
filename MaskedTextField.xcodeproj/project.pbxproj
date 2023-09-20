@@ -48,6 +48,8 @@
 		5BC0A46520E27DBE006A6529 /* MaskedTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BC0A45420E27DBE006A6529 /* MaskedTextField.swift */; };
 		5BE8916E23A123CC007ACC4B /* TextChange.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BE8916D23A123CC007ACC4B /* TextChange.swift */; };
 		5BEF87C72ABB2CB80076664F /* FlaggedCharacter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BEF87C62ABB2CB80076664F /* FlaggedCharacter.swift */; };
+		5BEF87CC2ABB72D40076664F /* TextFieldAttribution.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BEF87CB2ABB72D40076664F /* TextFieldAttribution.swift */; };
+		5BEF87CE2ABB72E50076664F /* DecoratedStringAttributor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BEF87CD2ABB72E50076664F /* DecoratedStringAttributor.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -115,6 +117,8 @@
 		5BC0A45420E27DBE006A6529 /* MaskedTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MaskedTextField.swift; sourceTree = "<group>"; };
 		5BE8916D23A123CC007ACC4B /* TextChange.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextChange.swift; sourceTree = "<group>"; };
 		5BEF87C62ABB2CB80076664F /* FlaggedCharacter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FlaggedCharacter.swift; sourceTree = "<group>"; };
+		5BEF87CB2ABB72D40076664F /* TextFieldAttribution.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextFieldAttribution.swift; sourceTree = "<group>"; };
+		5BEF87CD2ABB72E50076664F /* DecoratedStringAttributor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DecoratedStringAttributor.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -218,6 +222,7 @@
 				5BC0A44420E27DBD006A6529 /* Decoration */,
 				5B102C52215930ED00D2A7BB /* Sanitization */,
 				5B102C382156DBAB00D2A7BB /* Validation */,
+				5BEF87CA2ABB72C00076664F /* Attribution */,
 				5BC0A45420E27DBE006A6529 /* MaskedTextField.swift */,
 				5BC0A45320E27DBE006A6529 /* TextFieldDelegateProxy.swift */,
 				5BC0A45220E27DBE006A6529 /* TextFieldSurgeon.swift */,
@@ -291,6 +296,15 @@
 				5BC0A41E20E27D44006A6529 /* Info.plist */,
 			);
 			path = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		5BEF87CA2ABB72C00076664F /* Attribution */ = {
+			isa = PBXGroup;
+			children = (
+				5BEF87CD2ABB72E50076664F /* DecoratedStringAttributor.swift */,
+				5BEF87CB2ABB72D40076664F /* TextFieldAttribution.swift */,
+			);
+			path = Attribution;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -427,6 +441,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5BEF87CC2ABB72D40076664F /* TextFieldAttribution.swift in Sources */,
 				5BA09D52212DB764006371A9 /* UserIntentRecognizer.swift in Sources */,
 				5BC0A46420E27DBE006A6529 /* TextFieldDelegateProxy.swift in Sources */,
 				5B102C512158160400D2A7BB /* TextFieldValidation.swift in Sources */,
@@ -438,6 +453,7 @@
 				5BEF87C72ABB2CB80076664F /* FlaggedCharacter.swift in Sources */,
 				5BE8916E23A123CC007ACC4B /* TextChange.swift in Sources */,
 				5BC0A45B20E27DBE006A6529 /* PhoneNumberStringDecorator.swift in Sources */,
+				5BEF87CE2ABB72E50076664F /* DecoratedStringAttributor.swift in Sources */,
 				5BC0A45D20E27DBE006A6529 /* EmptyStringDecorator.swift in Sources */,
 				5B0F9CC020F7E018005772B7 /* String+CharacterGroups.swift in Sources */,
 				5BC0A45820E27DBE006A6529 /* String+NSRange.swift in Sources */,

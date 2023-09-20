@@ -8,13 +8,27 @@ class ViewController: UIViewController {
     sanitization: .accept(.decimalDigits),
     validation: .maximumLength(4)
   )
-  
+
   let anotherMaskedTextField = MaskedTextField(decoration: .template("__∞∞__"))
 
   let maskedTextFieldWithSuffix: MaskedTextField = MaskedTextField(
-    decoration: .template("___🤷🏽‍♀️___🇪🇷___", suffix: " руб-руб-руб."),
+    decoration: .template("? ___🤷🏽‍♀️___!🇪🇷!___", suffix: " руб-руб-руб."),
     sanitization: .accept(.decimalDigits),
-    validation: .function { $0.newText.count <= 9 }
+    validation: .function { $0.newText.count <= 9 },
+    attribution: .simple(
+      prefix: [
+        .foregroundColor: UIColor.red,
+        .font: UIFont.systemFont(ofSize: 8)
+      ],
+      body: [
+        .foregroundColor: UIColor.systemBlue,
+        .font: UIFont.boldSystemFont(ofSize: 34)
+      ],
+      suffix: [
+        .foregroundColor: UIColor.lightGray,
+        .font: UIFont.italicSystemFont(ofSize: 17)
+      ]
+    )
   )
 
   let uiTextField = UITextField()
@@ -31,6 +45,8 @@ class ViewController: UIViewController {
   private func addTextFields() {
     addTextField(maskedTextField, topAnchor: 60, color: .orange)
     addTextField(anotherMaskedTextField, topAnchor: 120, color: .blue)
+
+    maskedTextFieldWithSuffix.font = UIFont.boldSystemFont(ofSize: 34)
     addTextField( maskedTextFieldWithSuffix, topAnchor: 180, color: .green)
 
     uiTextField.textContentType = .telephoneNumber

@@ -41,6 +41,8 @@ public enum FlaggedCharacter {
     }
   }
 
+  public var isInsignificant: Bool { !isSignificant }
+
   public func isInsignificant(caretGravity: CaretGravity) -> Bool {
     switch self {
     case .significant:

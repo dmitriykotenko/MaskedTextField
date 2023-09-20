@@ -1,7 +1,7 @@
 import UIKit
 
 
-/// Automatically places auxiliary characters during editing of a text field.
+/// Automatically places auxiliary characters during editing of ``MaskedTextField``.
 class TextFieldDecorationEngine: TextFieldDelegateProxy {
 
   private weak var textField: MaskedTextField?

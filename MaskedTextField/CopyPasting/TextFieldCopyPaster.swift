@@ -1,7 +1,7 @@
 import UIKit
 
 
-/// Custom implementations of Cut and Paste commands for MaskedTextField.
+/// Custom implementations of Cut and Paste commands for ``MaskedTextField``.
 class TextFieldCopyPaster {
   
   private weak var textField: MaskedTextField?

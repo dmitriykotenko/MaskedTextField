@@ -10,6 +10,8 @@ class UserIntentRecognizer {
 
   private weak var textField: MaskedTextField?
 
+  private var decoratedText: DecoratedString? { textField?.decoratedText }
+
   init(textField: MaskedTextField) {
     self.textField = textField
   }
@@ -66,9 +68,5 @@ class UserIntentRecognizer {
         length: expandedLength
       )
     }
-  }
-
-  private var decoratedText: DecoratedString? {
-    textField?.decoratedText
   }
 }

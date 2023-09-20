@@ -19,8 +19,8 @@ public enum TextFieldDecoration {
     switch self {
     case .none:
       return EmptyStringDecorator()
-    case .template(let template, let finalSuffix):
-      return TemplateStringDecorator(template: template, globalSuffix: finalSuffix)
+    case .template(let template, let suffix):
+      return TemplateStringDecorator(template: template, globalSuffix: suffix)
     case .custom(let customDecorator):
       return customDecorator
     }

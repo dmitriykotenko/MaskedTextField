@@ -3,37 +3,28 @@ class TemplateStringDecorator: StringDecorator {
   private static let defaultPlaceholder = "_"
   
   private var template: String
-  private var prefix: String
+  private var prefix: [FlaggedCharacter]
   private var bodySuffixes: [String]
-  private var globalSuffix: String?
+  private var globalSuffix: [FlaggedCharacter]
   
   init(template: String,
        globalSuffix: String? = nil,
        placeholder: String = defaultPlaceholder) {
-    self.template = template
-    self.globalSuffix = globalSuffix
-
     let characterGroups = template.components(separatedBy: placeholder)
     
-    prefix = characterGroups[0]
+    self.template = template
+    self.prefix = characterGroups[0].map { .insignificant($0) }
+    self.globalSuffix = globalSuffix?.map { .insignificant($0, caretGravity: .toBeginning) } ?? []
+
     bodySuffixes = Array(characterGroups.dropFirst())
   }
   
   func decorate(_ string: String) -> DecoratedString {
-    let decoratedBody = decorateBody(of: string)
-
-    let decoratedGlobalSuffix: [FlaggedCharacter] =
-      (globalSuffix ?? "").map { .insignificant($0, caretGravity: .toBeginning) }
-
-    let decoratedCharacters = [decoratedPrefix, decoratedBody, decoratedGlobalSuffix].flatMap { $0 }
-    
-    return DecoratedString(characters: decoratedCharacters)
+    DecoratedString(
+      characters: [prefix, decorateBody(of: string), globalSuffix].flatMap { $0 }
+    )
   }
-  
-  private var decoratedPrefix: [FlaggedCharacter] {
-    prefix.map { .insignificant($0) }
-  }
-  
+
   private func decorateBody(of string: String) -> [FlaggedCharacter] {
     string.enumerated().flatMap {
       decorateCharacter($0.element, at: $0.offset)

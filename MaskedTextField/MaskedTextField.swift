@@ -187,9 +187,10 @@ open class MaskedTextField: UITextField {
     validationEngine?.validator = validation.parse()
   }
 
-  /// Sets a transformer which adds attributes to text field's text.
+  /// Sets a styler which adds attributes to text field's text.
   public func setAttribution(_ attribution: TextFieldAttribution) {
     attributor = attribution.parse()
+    textStyleUpdated()
   }
 
   private func applyDecoration() {

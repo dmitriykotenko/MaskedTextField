@@ -14,8 +14,8 @@ import UIKit
 open class MaskedTextField: UITextField {
   
   public override var delegate: UITextFieldDelegate? {
-    set { outerDelegate.parent = newValue }
     get { outerDelegate.parent }
+    set { outerDelegate.parent = newValue }
   }
   
   public override var text: String? {
@@ -39,6 +39,7 @@ open class MaskedTextField: UITextField {
   
   func userDidChangeText(to newText: String?) {
     text = newText
+    sendActions(for: .editingChanged)
   }
   
   /// Text field's current text with every character marked as significant or not significant.
